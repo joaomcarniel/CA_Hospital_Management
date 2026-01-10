@@ -10,6 +10,7 @@ namespace CA_Hospital_Management.Data
         public DbSet<Patient> Patients => Set<Patient>();
         public DbSet<Consultation> Consultations => Set<Consultation>();
         public DbSet<ConsultationNurse> ConsultationNurses => Set<ConsultationNurse>();
+        public DbSet<Login> Logins => Set<Login>();
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
@@ -25,6 +26,7 @@ namespace CA_Hospital_Management.Data
             modelBuilder.Entity<Patient>().ToTable("Patients");
             modelBuilder.Entity<Consultation>().ToTable("Consultations");
             modelBuilder.Entity<ConsultationNurse>().ToTable("ConsultationNurses");
+            modelBuilder.Entity<Login>().ToTable("Logins");
         }
     }
 }

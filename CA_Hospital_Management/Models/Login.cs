@@ -1,12 +1,16 @@
-﻿namespace CA_Hospital_Management.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CA_Hospital_Management.Models
 {
     public class Login
     {
+        [Key]
         public int LoginId { get; set; }
-        public string LoginUserName { get; set; }
-        public string LoginPassword { get; set; }
-        public string LoginRole { get; set; } // Admin / User
+
+        public string LoginUserName { get; set; } = string.Empty;
+        public string LoginPassword { get; set; } = string.Empty;
+        public string LoginRole { get; set; } = string.Empty;
         public DateTime LoginCreateDate { get; set; }
-        public bool LoginIsActive { get; set; }
+        public int LoginIsActive { get; set; }
     }
 }
