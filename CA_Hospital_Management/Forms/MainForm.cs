@@ -10,7 +10,16 @@ namespace CA_Hospital_Management.Forms
         {
             InitializeComponent();
             _loggedUser = user;
+
+            HideTabHeaders();
             ConfigureAccess();
+        }
+
+        private void HideTabHeaders()
+        {
+            tabControlMain.Appearance = TabAppearance.FlatButtons;
+            tabControlMain.ItemSize = new Size(0, 1);
+            tabControlMain.SizeMode = TabSizeMode.Fixed;
         }
 
         private void ConfigureAccess()
@@ -19,6 +28,21 @@ namespace CA_Hospital_Management.Forms
             {
                 //tabAdmin.Visible = false;
             }
+        }
+
+        private void menuDoctors_Click(object sender, EventArgs e)
+        {
+            tabControlMain.SelectedTab = tabDoctors;
+        }
+
+        private void tabControlMain_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuNurses_Click(object sender, EventArgs e)
+        {
+            tabControlMain.SelectedTab = tabNurses;
         }
     }
 }
