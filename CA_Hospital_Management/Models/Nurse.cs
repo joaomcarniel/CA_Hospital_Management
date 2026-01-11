@@ -2,11 +2,7 @@
 {
     public class Nurse : Staff
     {
-        public int NurseId
-        {
-            get => Id;
-            set => Id = value;
-        }
+        public int NurseId { get; set; }
 
         public int Hours { get; set; }
     }

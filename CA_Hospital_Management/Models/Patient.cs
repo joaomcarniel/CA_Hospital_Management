@@ -2,10 +2,6 @@
 {
     public class Patient : Person
     {
-        public int PatientId
-        {
-            get => Id;
-            set => Id = value;
-        }
+        public int PatientId { get; set; }
     }
 }

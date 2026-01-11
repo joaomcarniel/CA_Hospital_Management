@@ -1,10 +1,14 @@
-﻿namespace CA_Hospital_Management.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CA_Hospital_Management.Models
 {
     public abstract class Person
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
+        [Column("Addr", TypeName = "ntext")]
         public string Address { get; set; }
         public string County { get; set; }
         public DateTime Dob { get; set; }
