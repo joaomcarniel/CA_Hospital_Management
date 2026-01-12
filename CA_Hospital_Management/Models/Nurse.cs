@@ -4,6 +4,6 @@
     {
         public int NurseId { get; set; }
 
-        public int Hours { get; set; }
+        public int HoursWorked { get; set; }
     }
 }

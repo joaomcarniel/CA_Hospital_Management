@@ -20,14 +20,10 @@ namespace CA_Hospital_Management.Forms
             ConfigureAccess();
         }
 
-        // ================= FORM LOAD =================
-
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // Nada obrigatório aqui por enquanto
         }
 
-        // ================= MENU EVENTS =================
 
         private void menuDoctors_Click(object sender, EventArgs e)
         {
@@ -38,8 +34,6 @@ namespace CA_Hospital_Management.Forms
         {
             tabControlMain.SelectedTab = tabNurses;
         }
-
-        // ================= UI HELPERS =================
 
         private void HideTabHeaders()
         {
@@ -54,21 +48,6 @@ namespace CA_Hospital_Management.Forms
             {
                 tabAdmin.Parent = null;
             }
-        }
-
-        private void LoadTabs()
-        {
-            var doctorsControl = new DoctorsControl { Dock = DockStyle.Fill };
-            tabDoctors.Controls.Add(doctorsControl);
-
-            // futuramente:
-            // tabNurses.Controls.Add(new NursesControl { Dock = DockStyle.Fill });
-            // tabPatients.Controls.Add(new PatientsControl { Dock = DockStyle.Fill });
-        }
-
-        private void doctorsControl2_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void doctorsControl1_Load(object sender, EventArgs e)

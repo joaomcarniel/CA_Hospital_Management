@@ -131,6 +131,7 @@ namespace CA_Hospital_Management.UserControls
 
                 var doctor = new Doctor
                 {
+                    DoctorId = _selectedDoctorId.Value,
                     FirstName = txtFirstName.Text,
                     LastName = txtLastName.Text,
                     Phone = txtPhone.Text,
