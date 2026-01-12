@@ -12,6 +12,10 @@ namespace CA_Hospital_Management.Forms
             InitializeComponent();
             _loggedUser = user;
 
+            WindowState = FormWindowState.Maximized;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+
             HideTabHeaders();
             ConfigureAccess();
         }

@@ -119,7 +119,7 @@ namespace CA_Hospital_Management.Forms
             // 
             tabNurses.Location = new Point(4, 29);
             tabNurses.Name = "tabNurses";
-            tabNurses.Size = new Size(992, 687);
+            tabNurses.Size = new Size(1453, 687);
             tabNurses.TabIndex = 1;
             tabNurses.Text = "Nurses";
             // 
@@ -127,7 +127,7 @@ namespace CA_Hospital_Management.Forms
             // 
             tabPatients.Location = new Point(4, 29);
             tabPatients.Name = "tabPatients";
-            tabPatients.Size = new Size(992, 687);
+            tabPatients.Size = new Size(1453, 687);
             tabPatients.TabIndex = 2;
             tabPatients.Text = "Patients";
             // 
@@ -135,7 +135,7 @@ namespace CA_Hospital_Management.Forms
             // 
             tabConsultations.Location = new Point(4, 29);
             tabConsultations.Name = "tabConsultations";
-            tabConsultations.Size = new Size(992, 687);
+            tabConsultations.Size = new Size(1453, 687);
             tabConsultations.TabIndex = 3;
             tabConsultations.Text = "Consultations";
             // 
@@ -143,7 +143,7 @@ namespace CA_Hospital_Management.Forms
             // 
             tabAdmin.Location = new Point(4, 29);
             tabAdmin.Name = "tabAdmin";
-            tabAdmin.Size = new Size(992, 687);
+            tabAdmin.Size = new Size(1453, 687);
             tabAdmin.TabIndex = 4;
             tabAdmin.Text = "Admin";
             // 
