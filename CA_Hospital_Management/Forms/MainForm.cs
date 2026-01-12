@@ -59,5 +59,10 @@ namespace CA_Hospital_Management.Forms
         {
             tabControlMain.SelectedTab = tabPatients;
         }
+
+        private void patientsControl1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
