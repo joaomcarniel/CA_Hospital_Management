@@ -64,5 +64,10 @@ namespace CA_Hospital_Management.Forms
         {
 
         }
+
+        private void menuConsultations_Click(object sender, EventArgs e)
+        {
+            tabControlMain.SelectedTab = tabConsultations;
+        }
     }
 }

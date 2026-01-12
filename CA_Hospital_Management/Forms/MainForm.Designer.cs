@@ -29,18 +29,20 @@ namespace CA_Hospital_Management.Forms
             adminToolStripMenuItem = new ToolStripMenuItem();
             tabControlMain = new TabControl();
             tabDoctors = new TabPage();
-            tabNurses = new TabPage();
+            doctorsControl1 = new DoctorsControl();
             tabPatients = new TabPage();
             patientsControl1 = new PatientsControl();
             tabConsultations = new TabPage();
             tabAdmin = new TabPage();
+            tabNurses = new TabPage();
             nursesControl1 = new NursesControl();
-            doctorsControl1 = new DoctorsControl();
+            consultationControl1 = new ConsultationControl();
             menuStrip1.SuspendLayout();
             tabControlMain.SuspendLayout();
             tabDoctors.SuspendLayout();
-            tabNurses.SuspendLayout();
             tabPatients.SuspendLayout();
+            tabConsultations.SuspendLayout();
+            tabNurses.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -79,6 +81,7 @@ namespace CA_Hospital_Management.Forms
             menuConsultations.Name = "menuConsultations";
             menuConsultations.Size = new Size(112, 24);
             menuConsultations.Text = "Consultations";
+            menuConsultations.Click += menuConsultations_Click;
             // 
             // adminToolStripMenuItem
             // 
@@ -111,14 +114,13 @@ namespace CA_Hospital_Management.Forms
             tabDoctors.Text = "Doctors";
             tabDoctors.UseVisualStyleBackColor = true;
             // 
-            // tabNurses
+            // doctorsControl1
             // 
-            tabNurses.Controls.Add(nursesControl1);
-            tabNurses.Location = new Point(4, 29);
-            tabNurses.Name = "tabNurses";
-            tabNurses.Size = new Size(1453, 687);
-            tabNurses.TabIndex = 1;
-            tabNurses.Text = "Nurses";
+            doctorsControl1.Dock = DockStyle.Fill;
+            doctorsControl1.Location = new Point(3, 3);
+            doctorsControl1.Name = "doctorsControl1";
+            doctorsControl1.Size = new Size(1447, 681);
+            doctorsControl1.TabIndex = 0;
             // 
             // tabPatients
             // 
@@ -140,6 +142,7 @@ namespace CA_Hospital_Management.Forms
             // 
             // tabConsultations
             // 
+            tabConsultations.Controls.Add(consultationControl1);
             tabConsultations.Location = new Point(4, 29);
             tabConsultations.Name = "tabConsultations";
             tabConsultations.Size = new Size(1453, 687);
@@ -154,6 +157,15 @@ namespace CA_Hospital_Management.Forms
             tabAdmin.TabIndex = 4;
             tabAdmin.Text = "Admin";
             // 
+            // tabNurses
+            // 
+            tabNurses.Controls.Add(nursesControl1);
+            tabNurses.Location = new Point(4, 29);
+            tabNurses.Name = "tabNurses";
+            tabNurses.Size = new Size(1453, 687);
+            tabNurses.TabIndex = 1;
+            tabNurses.Text = "Nurses";
+            // 
             // nursesControl1
             // 
             nursesControl1.Dock = DockStyle.Fill;
@@ -162,13 +174,13 @@ namespace CA_Hospital_Management.Forms
             nursesControl1.Size = new Size(1453, 687);
             nursesControl1.TabIndex = 0;
             // 
-            // doctorsControl1
+            // consultationControl1
             // 
-            doctorsControl1.Dock = DockStyle.Fill;
-            doctorsControl1.Location = new Point(3, 3);
-            doctorsControl1.Name = "doctorsControl1";
-            doctorsControl1.Size = new Size(1447, 681);
-            doctorsControl1.TabIndex = 0;
+            consultationControl1.Dock = DockStyle.Fill;
+            consultationControl1.Location = new Point(0, 0);
+            consultationControl1.Name = "consultationControl1";
+            consultationControl1.Size = new Size(1453, 687);
+            consultationControl1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -186,8 +198,9 @@ namespace CA_Hospital_Management.Forms
             menuStrip1.PerformLayout();
             tabControlMain.ResumeLayout(false);
             tabDoctors.ResumeLayout(false);
-            tabNurses.ResumeLayout(false);
             tabPatients.ResumeLayout(false);
+            tabConsultations.ResumeLayout(false);
+            tabNurses.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -210,5 +223,6 @@ namespace CA_Hospital_Management.Forms
         private DoctorsControl doctorsControl1;
         private NursesControl nursesControl1;
         private PatientsControl patientsControl1;
+        private ConsultationControl consultationControl1;
     }
 }
