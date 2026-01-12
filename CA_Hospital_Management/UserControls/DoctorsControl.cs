@@ -9,6 +9,9 @@ namespace CA_Hospital_Management.UserControls
         private DoctorRepository _doctorRepo;
         private HospitalRepository _hospitalRepo;
         private int? _selectedDoctorId = null;
+        private int _currentPage = 1;
+        private const int PageSize = 10;
+        private int _totalPages = 0;
 
         public DoctorsControl()
         {
@@ -23,11 +26,25 @@ namespace CA_Hospital_Management.UserControls
             LoadDoctors();
             LoadCountyCombo();
             LoadGenderCombo();
+
+            CenterFormPanel();
+            dgvDoctors.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void LoadDoctors()
         {
-            dgvDoctors.DataSource = _hospitalRepo.GetAllDoctors();
+            var result = _doctorRepo.SearchDoctorsPaged(
+                txtSearchDoctor.Text.Trim(),
+                _currentPage,
+                PageSize);
+
+            dgvDoctors.DataSource = result.Items;
+
+            _totalPages = result.TotalPages;
+            lblPagination.Text = $"Page {_currentPage} of {_totalPages} ({result.TotalRecords} doctors)";
+
+            btnPrev.Enabled = _currentPage > 1;
+            btnNext.Enabled = _currentPage < _totalPages;
         }
 
         private void LoadCountyCombo()
@@ -79,7 +96,7 @@ namespace CA_Hospital_Management.UserControls
                 if (!ValidateDoctorForm())
                     return;
 
-                _doctorRepo.CreateDoctor(new Doctor
+                var doctor = new Doctor
                 {
                     FirstName = txtFirstName.Text,
                     LastName = txtLastName.Text,
@@ -90,10 +107,11 @@ namespace CA_Hospital_Management.UserControls
                     Gender = cmbGender.Text,
                     Pay = numSalary.Value,
                     Dob = DateTime.Parse(dtpDoB.Text)
-                });
+                };
+                _doctorRepo.CreateDoctor(doctor);
                 ClearForm();
                 LoadDoctors();
-                lblDocMessage.Text = $"Doctor {txtFirstName.Text} {txtLastName.Text} created successfully.";
+                lblDocMessage.Text = $"Doctor {doctor.FirstName} {doctor.LastName} created successfully.";
                 lblDocMessage.ForeColor = Color.Green;
                 lblDocMessage.Visible = true;
             }
@@ -111,9 +129,8 @@ namespace CA_Hospital_Management.UserControls
             {
                 if (_selectedDoctorId == null) return;
 
-                _doctorRepo.UpdateDoctor(new Doctor
+                var doctor = new Doctor
                 {
-                    DoctorId = (int)_selectedDoctorId,
                     FirstName = txtFirstName.Text,
                     LastName = txtLastName.Text,
                     Phone = txtPhone.Text,
@@ -123,13 +140,15 @@ namespace CA_Hospital_Management.UserControls
                     Gender = cmbGender.Text,
                     Pay = numSalary.Value,
                     Dob = DateTime.Parse(dtpDoB.Text)
-                });
+                };
+
+                _doctorRepo.UpdateDoctor(doctor);
                 ClearForm();
                 LoadDoctors();
-                lblDocMessage.Text = $"Doctor {txtFirstName.Text} {txtLastName.Text} Updated successfully.";
+                lblDocMessage.Text = $"Doctor {doctor.FirstName} {doctor.LastName} Updated successfully.";
                 lblDocMessage.ForeColor = Color.Green;
                 lblDocMessage.Visible = true;
-                
+
             }
             catch (Exception ex)
             {
@@ -151,7 +170,7 @@ namespace CA_Hospital_Management.UserControls
                 LoadDoctors();
                 lblDocMessage.Text = $"Doctor {_selectedDoctorId} Deleted successfully.";
                 lblDocMessage.ForeColor = Color.Green;
-                lblDocMessage.Visible = true;                
+                lblDocMessage.Visible = true;
             }
             catch (Exception ex)
             {
@@ -177,7 +196,7 @@ namespace CA_Hospital_Management.UserControls
             cmbGender.SelectedIndex = -1;
             numSalary.Value = 0;
             _selectedDoctorId = null;
-                
+
             lblDocFNameError.Text = "";
             lblDocLNameError.Text = "";
             lblDocPhoneError.Text = "";
@@ -275,9 +294,18 @@ namespace CA_Hospital_Management.UserControls
             lblDocMessage.Visible = false;
         }
 
+        private void CenterFormPanel()
+        {
+            if (panelForm == null) return;
+
+            panelForm.Left = (splitDoctors.Panel1.Width - panelForm.Width) / 2;
+            panelForm.Top = (splitDoctors.Panel1.Height - panelForm.Height) / 2;
+        }
+
+
         private void btnListDoctors_Click(object sender, EventArgs e)
         {
-            dgvDoctors.DataSource = _hospitalRepo.GetAllDoctors();
+            LoadDoctors();
         }
 
         private void splitDoctors_Panel1_Paint(object sender, PaintEventArgs e)
@@ -293,6 +321,39 @@ namespace CA_Hospital_Management.UserControls
         private void lblDocSalaryError_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void splitDoctors_Panel1_Resize(object sender, EventArgs e)
+        {
+            CenterFormPanel();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGetDoctor_Click(object sender, EventArgs e)
+        {
+            LoadDoctors();
+        }
+
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            if (_currentPage > 1)
+            {
+                _currentPage--;
+                LoadDoctors();
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (_totalPages > 1)
+            {
+                _currentPage++;
+                LoadDoctors();
+            }
         }
     }
 }

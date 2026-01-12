@@ -45,7 +45,7 @@ namespace CA_Hospital_Management.Forms
             menuStrip1.Items.AddRange(new ToolStripItem[] { menuDoctors, menuNurses, menuPatients, menuConsultations, adminToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1000, 28);
+            menuStrip1.Size = new Size(1461, 28);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -92,7 +92,7 @@ namespace CA_Hospital_Management.Forms
             tabControlMain.Location = new Point(0, 28);
             tabControlMain.Name = "tabControlMain";
             tabControlMain.SelectedIndex = 0;
-            tabControlMain.Size = new Size(1000, 720);
+            tabControlMain.Size = new Size(1461, 720);
             tabControlMain.TabIndex = 1;
             // 
             // tabDoctors
@@ -101,7 +101,7 @@ namespace CA_Hospital_Management.Forms
             tabDoctors.Location = new Point(4, 29);
             tabDoctors.Name = "tabDoctors";
             tabDoctors.Padding = new Padding(3);
-            tabDoctors.Size = new Size(992, 687);
+            tabDoctors.Size = new Size(1453, 687);
             tabDoctors.TabIndex = 0;
             tabDoctors.Text = "Doctors";
             tabDoctors.UseVisualStyleBackColor = true;
@@ -111,7 +111,7 @@ namespace CA_Hospital_Management.Forms
             doctorsControl1.Dock = DockStyle.Fill;
             doctorsControl1.Location = new Point(3, 3);
             doctorsControl1.Name = "doctorsControl1";
-            doctorsControl1.Size = new Size(986, 681);
+            doctorsControl1.Size = new Size(1447, 681);
             doctorsControl1.TabIndex = 0;
             doctorsControl1.Load += doctorsControl1_Load;
             // 
@@ -151,7 +151,7 @@ namespace CA_Hospital_Management.Forms
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1000, 748);
+            ClientSize = new Size(1461, 748);
             Controls.Add(tabControlMain);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
