@@ -3,7 +3,7 @@ using CA_Hospital_Management.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
-namespace CA_Hospital_Management.Services
+namespace CA_Hospital_Management.Repositories
 {
     public class DoctorRepository
     {
