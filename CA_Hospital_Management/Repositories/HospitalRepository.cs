@@ -95,7 +95,7 @@ namespace HospitalManagement.Repositories
 
         // -------------------- CONSULTATION NURSES --------------------
 
-        public List<ConsultationNurse> GetConsultationNursesByConsultation(int consultationId)
+        public List<ConsultationDetails> GetConsultationNursesByConsultation(int consultationId)
         {
             using var context = new HospitalDbContext();
             return context.ConsultationNurses
