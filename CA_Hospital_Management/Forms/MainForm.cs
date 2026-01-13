@@ -69,5 +69,15 @@ namespace CA_Hospital_Management.Forms
         {
             tabControlMain.SelectedTab = tabConsultations;
         }
+
+        private void sfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControlMain.SelectedTab = tabConsultationDetails;
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

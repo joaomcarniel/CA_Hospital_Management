@@ -4,24 +4,22 @@ using HospitalManagement.Repositories;
 
 namespace CA_Hospital_Management.UserControls
 {
-    public partial class ConsultationNursesControl : UserControl
+    public partial class ConsultationDetailsControl : UserControl
     {
-        private ConsultationNurseRepository _consultationRepo;
-        private HospitalRepository _hospitalRepo;
+        private ConsultationDetailsRepository _consultationRepo;
         private int? _selectedConsultationId = null;
         private int _currentPage = 1;
         private const int PageSize = 10;
         private int _totalPages = 0;
 
-        public ConsultationNursesControl()
+        public ConsultationDetailsControl()
         {
             InitializeComponent();
         }
 
         private void ConsultationsControl_Load(object sender, EventArgs e)
         {
-            _consultationRepo = new ConsultationNurseRepository();
-            _hospitalRepo = new HospitalRepository();
+            _consultationRepo = new ConsultationDetailsRepository();
 
             LoadConsultation();
 
@@ -31,7 +29,7 @@ namespace CA_Hospital_Management.UserControls
 
         private void LoadConsultation()
         {
-            var result = _consultationRepo.SearchConsultationNursePaged(
+            var result = _consultationRepo.SearchConsultationDetailsPaged(
                 txtSearch.Text.Trim(),
                 _currentPage,
                 PageSize);
@@ -39,7 +37,7 @@ namespace CA_Hospital_Management.UserControls
             mainDgv.DataSource = result.Items;
 
             _totalPages = result.TotalPages;
-            lblPagination.Text = $"Page {_currentPage} of {_totalPages} ({result.TotalRecords} Consultations)";
+            lblPagination.Text = $"Page {_currentPage} of {_totalPages} ({result.TotalRecords} Consultation Details)";
 
             btnPrev.Enabled = _currentPage > 1;
             btnNext.Enabled = _currentPage < _totalPages;
@@ -49,12 +47,12 @@ namespace CA_Hospital_Management.UserControls
         {
             if (e.RowIndex < 0) return;
 
-            var consultation = mainDgv.Rows[e.RowIndex].DataBoundItem as ConsultationDetails;
+            var consultation = mainDgv.Rows[e.RowIndex].DataBoundItem as ConsultationDetailsDto;
             if (consultation == null) return;
 
-            _selectedConsultationId = consultation.ConsultationId;
+            _selectedConsultationId = consultation.ConsultDetailsId;
             txtPatient.Text = $"{consultation.PatientId}";
-            txtNurseId.Text = $"{consultation.PatientId}";
+            txtNurseId.Text = $"{consultation.NurseId}";
             txtConsultationId.Text = $"{consultation.ConsultationId}";
             txtReason.Text = consultation.Reason;
             txtNotes.Text = consultation.Notes;
@@ -71,13 +69,13 @@ namespace CA_Hospital_Management.UserControls
                 var consultation = new ConsultationDetails
                 {
                     PatientId = int.Parse(txtPatient.Text),
-                    ConsultDetailsId = int.Parse(txtNurseId.Text),
+                    NurseId = int.Parse(txtNurseId.Text),
                     ConsultationId = int.Parse(txtConsultationId.Text),
-                    Notes = txtNotes.Text,
                     Reason = txtReason.Text,
-                    ConsultationDate = DateTime.Parse(dtpConsultationDate.Text)
+                    Notes = txtNotes.Text,
+                    ConsultationDate = dtpConsultationDate.Value
                 };
-                _consultationRepo.CreateConsultation(consultation);
+                _consultationRepo.CreateConsultationDetials(consultation);
                 ClearForm();
                 LoadConsultation();
                 lblMessage.Text = $"Consultation details created successfully.";

@@ -1,6 +1,6 @@
 ﻿namespace CA_Hospital_Management.UserControls
 {
-    partial class ConsultationNursesControl
+    partial class ConsultationDetailsControl
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -43,6 +43,8 @@
         {
             splitCont = new SplitContainer();
             panelForm = new Panel();
+            lblPatientIdError = new Label();
+            txtNurseId = new TextBox();
             label3 = new Label();
             txtPatientId = new TextBox();
             txtNotes = new TextBox();
@@ -71,8 +73,6 @@
             lblAddress = new Label();
             lblNotesError = new Label();
             mainDgv = new DataGridView();
-            txtNurseId = new TextBox();
-            lblPatientIdError = new Label();
             ((System.ComponentModel.ISupportInitialize)splitCont).BeginInit();
             splitCont.Panel1.SuspendLayout();
             splitCont.Panel2.SuspendLayout();
@@ -140,6 +140,22 @@
             panelForm.Size = new Size(1524, 589);
             panelForm.TabIndex = 32;
             // 
+            // lblPatientIdError
+            // 
+            lblPatientIdError.ForeColor = Color.Red;
+            lblPatientIdError.Location = new Point(878, 192);
+            lblPatientIdError.Name = "lblPatientIdError";
+            lblPatientIdError.Size = new Size(327, 23);
+            lblPatientIdError.TabIndex = 44;
+            // 
+            // txtNurseId
+            // 
+            txtNurseId.BackColor = Color.FromArgb(255, 224, 192);
+            txtNurseId.Location = new Point(416, 97);
+            txtNurseId.Name = "txtNurseId";
+            txtNurseId.Size = new Size(327, 27);
+            txtNurseId.TabIndex = 43;
+            // 
             // label3
             // 
             label3.Location = new Point(764, 164);
@@ -178,7 +194,7 @@
             label2.Name = "label2";
             label2.Size = new Size(377, 57);
             label2.TabIndex = 38;
-            label2.Text = "Consultations Details";
+            label2.Text = "Consultation Details";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblPagination
@@ -431,26 +447,10 @@
             mainDgv.TabIndex = 0;
             mainDgv.CellClick += mainDgv_CellClick;
             // 
-            // txtNurseId
-            // 
-            txtNurseId.BackColor = Color.FromArgb(255, 224, 192);
-            txtNurseId.Location = new Point(416, 97);
-            txtNurseId.Name = "txtNurseId";
-            txtNurseId.Size = new Size(327, 27);
-            txtNurseId.TabIndex = 43;
-            // 
-            // lblPatientIdError
-            // 
-            lblPatientIdError.ForeColor = Color.Red;
-            lblPatientIdError.Location = new Point(878, 192);
-            lblPatientIdError.Name = "lblPatientIdError";
-            lblPatientIdError.Size = new Size(327, 23);
-            lblPatientIdError.TabIndex = 44;
-            // 
-            // ConsultationNursesControl
+            // ConsultationDetailsControl
             // 
             Controls.Add(splitCont);
-            Name = "ConsultationNursesControl";
+            Name = "ConsultationDetailsControl";
             Size = new Size(1561, 832);
             Load += ConsultationsControl_Load;
             splitCont.Panel1.ResumeLayout(false);

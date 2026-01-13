@@ -27,28 +27,32 @@ namespace CA_Hospital_Management.Forms
             menuPatients = new ToolStripMenuItem();
             menuConsultations = new ToolStripMenuItem();
             adminToolStripMenuItem = new ToolStripMenuItem();
+            consultDetailToolStripMenuItem = new ToolStripMenuItem();
             tabControlMain = new TabControl();
             tabDoctors = new TabPage();
             doctorsControl1 = new DoctorsControl();
             tabPatients = new TabPage();
             patientsControl1 = new PatientsControl();
             tabConsultations = new TabPage();
+            consultationControl1 = new ConsultationControl();
             tabAdmin = new TabPage();
             tabNurses = new TabPage();
             nursesControl1 = new NursesControl();
-            consultationControl1 = new ConsultationControl();
+            tabConsultationDetails = new TabPage();
+            consultationDetailsControl1 = new ConsultationDetailsControl();
             menuStrip1.SuspendLayout();
             tabControlMain.SuspendLayout();
             tabDoctors.SuspendLayout();
             tabPatients.SuspendLayout();
             tabConsultations.SuspendLayout();
             tabNurses.SuspendLayout();
+            tabConsultationDetails.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { menuDoctors, menuNurses, menuPatients, menuConsultations, adminToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { menuDoctors, menuNurses, menuPatients, menuConsultations, adminToolStripMenuItem, consultDetailToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1461, 28);
@@ -89,6 +93,13 @@ namespace CA_Hospital_Management.Forms
             adminToolStripMenuItem.Size = new Size(67, 24);
             adminToolStripMenuItem.Text = "Admin";
             // 
+            // consultDetailToolStripMenuItem
+            // 
+            consultDetailToolStripMenuItem.Name = "consultDetailToolStripMenuItem";
+            consultDetailToolStripMenuItem.Size = new Size(156, 24);
+            consultDetailToolStripMenuItem.Text = "Consultation Details";
+            consultDetailToolStripMenuItem.Click += sfToolStripMenuItem_Click;
+            // 
             // tabControlMain
             // 
             tabControlMain.Controls.Add(tabDoctors);
@@ -96,6 +107,7 @@ namespace CA_Hospital_Management.Forms
             tabControlMain.Controls.Add(tabConsultations);
             tabControlMain.Controls.Add(tabAdmin);
             tabControlMain.Controls.Add(tabNurses);
+            tabControlMain.Controls.Add(tabConsultationDetails);
             tabControlMain.Dock = DockStyle.Fill;
             tabControlMain.Location = new Point(0, 28);
             tabControlMain.Name = "tabControlMain";
@@ -149,6 +161,14 @@ namespace CA_Hospital_Management.Forms
             tabConsultations.TabIndex = 3;
             tabConsultations.Text = "Consultations";
             // 
+            // consultationControl1
+            // 
+            consultationControl1.Dock = DockStyle.Fill;
+            consultationControl1.Location = new Point(0, 0);
+            consultationControl1.Name = "consultationControl1";
+            consultationControl1.Size = new Size(1453, 687);
+            consultationControl1.TabIndex = 0;
+            // 
             // tabAdmin
             // 
             tabAdmin.Location = new Point(4, 29);
@@ -174,13 +194,25 @@ namespace CA_Hospital_Management.Forms
             nursesControl1.Size = new Size(1453, 687);
             nursesControl1.TabIndex = 0;
             // 
-            // consultationControl1
+            // tabConsultationDetails
             // 
-            consultationControl1.Dock = DockStyle.Fill;
-            consultationControl1.Location = new Point(0, 0);
-            consultationControl1.Name = "consultationControl1";
-            consultationControl1.Size = new Size(1453, 687);
-            consultationControl1.TabIndex = 0;
+            tabConsultationDetails.Controls.Add(consultationDetailsControl1);
+            tabConsultationDetails.Location = new Point(4, 29);
+            tabConsultationDetails.Name = "tabConsultationDetails";
+            tabConsultationDetails.Padding = new Padding(3);
+            tabConsultationDetails.Size = new Size(1453, 687);
+            tabConsultationDetails.TabIndex = 5;
+            tabConsultationDetails.Text = "Consultation Details";
+            tabConsultationDetails.UseVisualStyleBackColor = true;
+            tabConsultationDetails.Click += tabPage1_Click;
+            // 
+            // consultationDetailsControl1
+            // 
+            consultationDetailsControl1.Dock = DockStyle.Fill;
+            consultationDetailsControl1.Location = new Point(3, 3);
+            consultationDetailsControl1.Name = "consultationDetailsControl1";
+            consultationDetailsControl1.Size = new Size(1447, 681);
+            consultationDetailsControl1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -201,6 +233,7 @@ namespace CA_Hospital_Management.Forms
             tabPatients.ResumeLayout(false);
             tabConsultations.ResumeLayout(false);
             tabNurses.ResumeLayout(false);
+            tabConsultationDetails.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -224,5 +257,8 @@ namespace CA_Hospital_Management.Forms
         private NursesControl nursesControl1;
         private PatientsControl patientsControl1;
         private ConsultationControl consultationControl1;
+        private ToolStripMenuItem consultDetailToolStripMenuItem;
+        private TabPage tabConsultationDetails;
+        private ConsultationDetailsControl consultationDetailsControl1;
     }
 }
