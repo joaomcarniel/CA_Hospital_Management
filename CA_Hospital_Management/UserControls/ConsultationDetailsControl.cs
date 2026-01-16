@@ -1,6 +1,5 @@
 ﻿using CA_Hospital_Management.Models;
 using CA_Hospital_Management.Repositories;
-using HospitalManagement.Repositories;
 
 namespace CA_Hospital_Management.UserControls
 {
@@ -75,7 +74,7 @@ namespace CA_Hospital_Management.UserControls
                     Notes = txtNotes.Text,
                     ConsultationDate = dtpConsultationDate.Value
                 };
-                _consultationRepo.CreateConsultationDetials(consultation);
+                _consultationRepo.CreateConsultationDetails(consultation);
                 ClearForm();
                 LoadConsultation();
                 lblMessage.Text = $"Consultation details created successfully.";
@@ -231,29 +230,9 @@ namespace CA_Hospital_Management.UserControls
             panelForm.Top = (splitCont.Panel1.Height - panelForm.Height) / 2;
         }
 
-        private void splitCont_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblMessage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblSalaryError_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void splitCont_Panel1_Resize(object sender, EventArgs e)
         {
             CenterFormPanel();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnGetConsultation_Click(object sender, EventArgs e)
@@ -293,11 +272,6 @@ namespace CA_Hospital_Management.UserControls
             {
                 e.Handled = true;
             }
-        }
-
-        private void txtReason_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

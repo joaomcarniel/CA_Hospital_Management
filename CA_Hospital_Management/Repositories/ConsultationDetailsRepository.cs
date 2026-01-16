@@ -16,7 +16,7 @@ namespace CA_Hospital_Management.Repositories
             context = new HospitalDbContext();
         }
 
-        internal void CreateConsultationDetials(ConsultationDetails consultation)
+        internal void CreateConsultationDetails(ConsultationDetails consultation)
         {
             context.Database.ExecuteSqlRaw(
                 "EXEC CreateConsultationDetails @NurseId, @ConsultationId, @PatientId, @Reason, @Notes, @ConsultationDate",

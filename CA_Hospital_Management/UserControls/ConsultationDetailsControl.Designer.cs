@@ -91,7 +91,6 @@
             // 
             splitCont.Panel1.AutoScroll = true;
             splitCont.Panel1.Controls.Add(panelForm);
-            splitCont.Panel1.Paint += splitCont_Panel1_Paint;
             splitCont.Panel1.Resize += splitCont_Panel1_Resize;
             // 
             // splitCont.Panel2
@@ -240,7 +239,6 @@
             label1.Size = new Size(122, 23);
             label1.TabIndex = 34;
             label1.Text = "Search By Patient";
-            label1.Click += label1_Click;
             // 
             // txtSearch
             // 
@@ -304,7 +302,6 @@
             lblMessage.TabIndex = 31;
             lblMessage.TextAlign = ContentAlignment.MiddleCenter;
             lblMessage.Visible = false;
-            lblMessage.Click += lblMessage_Click;
             // 
             // lblLastName
             // 
@@ -393,7 +390,6 @@
             txtReason.Size = new Size(789, 74);
             txtReason.TabIndex = 7;
             txtReason.TextAlign = HorizontalAlignment.Right;
-            txtReason.TextChanged += txtReason_TextChanged;
             // 
             // dtpConsultationDate
             // 
