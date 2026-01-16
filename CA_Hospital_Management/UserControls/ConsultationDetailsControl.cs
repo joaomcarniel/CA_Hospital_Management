@@ -51,7 +51,7 @@ namespace CA_Hospital_Management.UserControls
             if (consultation == null) return;
 
             _selectedConsultationId = consultation.ConsultDetailsId;
-            txtPatient.Text = $"{consultation.PatientId}";
+            txtPatientId.Text = $"{consultation.PatientId}";
             txtNurseId.Text = $"{consultation.NurseId}";
             txtConsultationId.Text = $"{consultation.ConsultationId}";
             txtReason.Text = consultation.Reason;
@@ -68,7 +68,7 @@ namespace CA_Hospital_Management.UserControls
 
                 var consultation = new ConsultationDetails
                 {
-                    PatientId = int.Parse(txtPatient.Text),
+                    PatientId = int.Parse(txtPatientId.Text),
                     NurseId = int.Parse(txtNurseId.Text),
                     ConsultationId = int.Parse(txtConsultationId.Text),
                     Reason = txtReason.Text,
@@ -99,7 +99,7 @@ namespace CA_Hospital_Management.UserControls
                 var consultation = new ConsultationDetails
                 {
                     ConsultDetailsId = _selectedConsultationId.Value,
-                    PatientId = int.Parse(txtPatient.Text),
+                    PatientId = int.Parse(txtPatientId.Text),
                     ConsultationId = int.Parse(txtConsultationId.Text),
                     NurseId = int.Parse(txtNurseId.Text),
                     Reason = txtReason.Text,
@@ -152,8 +152,9 @@ namespace CA_Hospital_Management.UserControls
 
         private void ClearForm()
         {
-            txtPatient.Clear();
+            txtPatientId.Clear();
             txtConsultationId.Clear();
+            txtNurseId.Clear();
             txtReason.Clear();
             txtNotes.Clear();
             _selectedConsultationId = null;
@@ -175,7 +176,7 @@ namespace CA_Hospital_Management.UserControls
 
             HideErrors();
 
-            if (string.IsNullOrWhiteSpace(txtPatient.Text))
+            if (string.IsNullOrWhiteSpace(txtPatientId.Text))
             {
                 lblPatientIdError.Text = "Patient is required";
                 lblPatientIdError.Visible = true;
@@ -292,6 +293,11 @@ namespace CA_Hospital_Management.UserControls
             {
                 e.Handled = true;
             }
+        }
+
+        private void txtReason_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
