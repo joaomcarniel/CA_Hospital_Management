@@ -303,29 +303,9 @@ namespace CA_Hospital_Management.UserControls
             panelForm.Top = (splitCont.Panel1.Height - panelForm.Height) / 2;
         }
 
-        private void splitCont_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblMessage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblSalaryError_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void splitCont_Panel1_Resize(object sender, EventArgs e)
         {
             CenterFormPanel();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnGetNurse_Click(object sender, EventArgs e)
@@ -349,6 +329,22 @@ namespace CA_Hospital_Management.UserControls
                 _currentPage++;
                 LoadNurses();
             }
+        }
+
+        private void btnMaleNurses_Click(object sender, EventArgs e)
+        {
+            var result = _nurseRepo.SearchMaleNursesPaged(
+                txtSearch.Text.Trim(),
+                _currentPage,
+                PageSize);
+
+            mainDgv.DataSource = result.Items;
+
+            _totalPages = result.TotalPages;
+            lblPagination.Text = $"Page {_currentPage} of {_totalPages} ({result.TotalRecords} nurses)";
+
+            btnPrev.Enabled = _currentPage > 1;
+            btnNext.Enabled = _currentPage < _totalPages;
         }
     }
 }

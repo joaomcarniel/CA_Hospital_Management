@@ -98,6 +98,7 @@
             lblCountyError = new Label();
             cmbCounty = new ComboBox();
             mainDgv = new DataGridView();
+            btnMaleNurses = new Button();
             ((System.ComponentModel.ISupportInitialize)splitCont).BeginInit();
             splitCont.Panel1.SuspendLayout();
             splitCont.Panel2.SuspendLayout();
@@ -118,7 +119,6 @@
             // 
             splitCont.Panel1.AutoScroll = true;
             splitCont.Panel1.Controls.Add(panelForm);
-            splitCont.Panel1.Paint += splitCont_Panel1_Paint;
             splitCont.Panel1.Resize += splitCont_Panel1_Resize;
             // 
             // splitCont.Panel2
@@ -130,6 +130,7 @@
             // 
             // panelForm
             // 
+            panelForm.Controls.Add(btnMaleNurses);
             panelForm.Controls.Add(label2);
             panelForm.Controls.Add(lblPagination);
             panelForm.Controls.Add(btnNext);
@@ -230,7 +231,6 @@
             label1.Size = new Size(122, 23);
             label1.TabIndex = 34;
             label1.Text = "Search By Name";
-            label1.Click += label1_Click;
             // 
             // txtSearch
             // 
@@ -275,7 +275,7 @@
             btnCreate.BackColor = SystemColors.MenuHighlight;
             btnCreate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCreate.ForeColor = Color.White;
-            btnCreate.Location = new Point(541, 394);
+            btnCreate.Location = new Point(471, 394);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(92, 40);
             btnCreate.TabIndex = 26;
@@ -300,7 +300,6 @@
             lblMessage.TabIndex = 31;
             lblMessage.TextAlign = ContentAlignment.MiddleCenter;
             lblMessage.Visible = false;
-            lblMessage.Click += lblMessage_Click;
             // 
             // lblLastName
             // 
@@ -323,7 +322,7 @@
             btnClear.BackColor = SystemColors.MenuHighlight;
             btnClear.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClear.ForeColor = Color.White;
-            btnClear.Location = new Point(901, 394);
+            btnClear.Location = new Point(831, 394);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(92, 42);
             btnClear.TabIndex = 29;
@@ -344,7 +343,7 @@
             btnDelete.BackColor = Color.Red;
             btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(781, 394);
+            btnDelete.Location = new Point(711, 394);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(92, 40);
             btnDelete.TabIndex = 28;
@@ -365,7 +364,7 @@
             btnUpdate.BackColor = Color.Lime;
             btnUpdate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnUpdate.ForeColor = Color.White;
-            btnUpdate.Location = new Point(661, 394);
+            btnUpdate.Location = new Point(591, 394);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(92, 40);
             btnUpdate.TabIndex = 27;
@@ -420,7 +419,6 @@
             lblSalaryError.Name = "lblSalaryError";
             lblSalaryError.Size = new Size(259, 23);
             lblSalaryError.TabIndex = 23;
-            lblSalaryError.Click += lblSalaryError_Click;
             // 
             // txtEmail
             // 
@@ -430,11 +428,11 @@
             txtEmail.Size = new Size(327, 27);
             txtEmail.TabIndex = 10;
             // 
-            // hours worked
+            // hoursWorked
             // 
             hoursWorked.BackColor = Color.FromArgb(255, 224, 192);
             hoursWorked.Location = new Point(416, 318);
-            hoursWorked.Name = "hours";
+            hoursWorked.Name = "hoursWorked";
             hoursWorked.Size = new Size(179, 27);
             hoursWorked.TabIndex = 22;
             // 
@@ -446,10 +444,10 @@
             lblEmailError.Size = new Size(280, 23);
             lblEmailError.TabIndex = 11;
             // 
-            // lblSalary
+            // lblHoursWorked
             // 
             lblHoursWorked.Location = new Point(314, 321);
-            lblHoursWorked.Name = "lblSalary";
+            lblHoursWorked.Name = "lblHoursWorked";
             lblHoursWorked.Size = new Size(100, 23);
             lblHoursWorked.TabIndex = 21;
             lblHoursWorked.Text = "Hours";
@@ -542,6 +540,19 @@
             mainDgv.TabIndex = 0;
             mainDgv.CellClick += mainDgv_CellClick;
             // 
+            // btnMaleNurses
+            // 
+            btnMaleNurses.BackColor = SystemColors.MenuHighlight;
+            btnMaleNurses.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnMaleNurses.ForeColor = Color.White;
+            btnMaleNurses.Location = new Point(951, 392);
+            btnMaleNurses.Name = "btnMaleNurses";
+            btnMaleNurses.Size = new Size(123, 42);
+            btnMaleNurses.TabIndex = 39;
+            btnMaleNurses.Text = "Male Nurses";
+            btnMaleNurses.UseVisualStyleBackColor = false;
+            btnMaleNurses.Click += btnMaleNurses_Click;
+            // 
             // NursesControl
             // 
             Controls.Add(splitCont);
@@ -569,5 +580,6 @@
         private Button btnNext;
         private Button btnPrev;
         private Label label2;
+        private Button btnMaleNurses;
     }
 }
