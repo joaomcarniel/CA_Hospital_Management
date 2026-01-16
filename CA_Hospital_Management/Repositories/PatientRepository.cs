@@ -82,6 +82,47 @@ namespace CA_Hospital_Management.Repositories
             return result;
         }
 
+        public ListPaginated<Patient> SearchPatientsAbove25Paged(int pageNumber, int pageSize)
+        {
+            var result = new ListPaginated<Patient>();
+
+            using var conn = new SqlConnection(context.Database.GetConnectionString());
+            using var cmd = new SqlCommand("GetPatientsAbove25", conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@PageNumber", pageNumber);
+            cmd.Parameters.AddWithValue("@PageSize", pageSize);
+
+            conn.Open();
+
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                result.Items.Add(new Patient
+                {
+                    PatientId = reader.GetInt32(reader.GetOrdinal("PatientId")),
+                    FirstName = reader.GetString(reader.GetOrdinal("FirstName")),
+                    LastName = reader.GetString(reader.GetOrdinal("LastName")),
+                    Phone = reader.GetString(reader.GetOrdinal("Phone")),
+                    Email = reader.GetString(reader.GetOrdinal("Email")),
+                    Address = reader.GetString(reader.GetOrdinal("Addr")),
+                    County = reader.GetString(reader.GetOrdinal("County")),
+                    Gender = reader.GetString(reader.GetOrdinal("Gender")),
+                    PatientNumber = reader.GetInt32(reader.GetOrdinal("PatientNumber")),
+                    Dob = reader.GetDateTime(reader.GetOrdinal("Dob"))
+                });
+            }
+            if (reader.NextResult() && reader.Read())
+            {
+                result.TotalRecords = reader.GetInt32(0);
+                result.TotalPages = (int)Math.Ceiling(
+                    (double)result.TotalRecords / pageSize);
+            }
+
+            return result;
+        }
+
         public void UpdatePatient(Patient patient)
         {
             context.Database.ExecuteSqlRaw(

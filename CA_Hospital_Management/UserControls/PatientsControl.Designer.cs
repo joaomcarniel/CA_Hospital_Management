@@ -57,6 +57,8 @@
         {
             splitCont = new SplitContainer();
             panelForm = new Panel();
+            btnGetPatientAbove25 = new Button();
+            txtPatientNumber = new TextBox();
             label2 = new Label();
             lblPagination = new Label();
             btnNext = new Button();
@@ -95,7 +97,6 @@
             lblCountyError = new Label();
             cmbCounty = new ComboBox();
             mainDgv = new DataGridView();
-            txtPatientNumber = new TextBox();
             ((System.ComponentModel.ISupportInitialize)splitCont).BeginInit();
             splitCont.Panel1.SuspendLayout();
             splitCont.Panel2.SuspendLayout();
@@ -115,7 +116,6 @@
             // 
             splitCont.Panel1.AutoScroll = true;
             splitCont.Panel1.Controls.Add(panelForm);
-            splitCont.Panel1.Paint += splitCont_Panel1_Paint;
             splitCont.Panel1.Resize += splitCont_Panel1_Resize;
             // 
             // splitCont.Panel2
@@ -127,6 +127,7 @@
             // 
             // panelForm
             // 
+            panelForm.Controls.Add(btnGetPatientAbove25);
             panelForm.Controls.Add(txtPatientNumber);
             panelForm.Controls.Add(label2);
             panelForm.Controls.Add(lblPagination);
@@ -169,6 +170,28 @@
             panelForm.Name = "panelForm";
             panelForm.Size = new Size(1524, 589);
             panelForm.TabIndex = 32;
+            // 
+            // btnGetPatientAbove25
+            // 
+            btnGetPatientAbove25.BackColor = SystemColors.MenuHighlight;
+            btnGetPatientAbove25.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGetPatientAbove25.ForeColor = Color.White;
+            btnGetPatientAbove25.Location = new Point(949, 394);
+            btnGetPatientAbove25.Name = "btnGetPatientAbove25";
+            btnGetPatientAbove25.Size = new Size(154, 42);
+            btnGetPatientAbove25.TabIndex = 40;
+            btnGetPatientAbove25.Text = "Patients Above 25";
+            btnGetPatientAbove25.UseVisualStyleBackColor = false;
+            btnGetPatientAbove25.Click += btnGetPatientAbove25_Click;
+            // 
+            // txtPatientNumber
+            // 
+            txtPatientNumber.AutoCompleteSource = AutoCompleteSource.HistoryList;
+            txtPatientNumber.BackColor = Color.FromArgb(255, 224, 192);
+            txtPatientNumber.Location = new Point(416, 318);
+            txtPatientNumber.Name = "txtPatientNumber";
+            txtPatientNumber.Size = new Size(327, 27);
+            txtPatientNumber.TabIndex = 39;
             // 
             // label2
             // 
@@ -227,7 +250,6 @@
             label1.Size = new Size(122, 23);
             label1.TabIndex = 34;
             label1.Text = "Search By Name";
-            label1.Click += label1_Click;
             // 
             // txtSearch
             // 
@@ -272,7 +294,7 @@
             btnCreate.BackColor = SystemColors.MenuHighlight;
             btnCreate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCreate.ForeColor = Color.White;
-            btnCreate.Location = new Point(541, 394);
+            btnCreate.Location = new Point(457, 394);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(92, 40);
             btnCreate.TabIndex = 26;
@@ -297,7 +319,6 @@
             lblMessage.TabIndex = 31;
             lblMessage.TextAlign = ContentAlignment.MiddleCenter;
             lblMessage.Visible = false;
-            lblMessage.Click += lblMessage_Click;
             // 
             // lblLastName
             // 
@@ -320,7 +341,7 @@
             btnClear.BackColor = SystemColors.MenuHighlight;
             btnClear.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClear.ForeColor = Color.White;
-            btnClear.Location = new Point(901, 394);
+            btnClear.Location = new Point(826, 394);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(92, 42);
             btnClear.TabIndex = 29;
@@ -341,7 +362,7 @@
             btnDelete.BackColor = Color.Red;
             btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(781, 394);
+            btnDelete.Location = new Point(703, 394);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(92, 40);
             btnDelete.TabIndex = 28;
@@ -362,7 +383,7 @@
             btnUpdate.BackColor = Color.Lime;
             btnUpdate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnUpdate.ForeColor = Color.White;
-            btnUpdate.Location = new Point(661, 394);
+            btnUpdate.Location = new Point(580, 394);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(92, 40);
             btnUpdate.TabIndex = 27;
@@ -417,7 +438,6 @@
             lblSalaryError.Name = "lblSalaryError";
             lblSalaryError.Size = new Size(259, 23);
             lblSalaryError.TabIndex = 23;
-            lblSalaryError.Click += lblSalaryError_Click;
             // 
             // txtEmail
             // 
@@ -531,15 +551,6 @@
             mainDgv.TabIndex = 0;
             mainDgv.CellClick += mainDgv_CellClick;
             // 
-            // txtPatientNumber
-            // 
-            txtPatientNumber.AutoCompleteSource = AutoCompleteSource.HistoryList;
-            txtPatientNumber.BackColor = Color.FromArgb(255, 224, 192);
-            txtPatientNumber.Location = new Point(416, 318);
-            txtPatientNumber.Name = "txtPatientNumber";
-            txtPatientNumber.Size = new Size(327, 27);
-            txtPatientNumber.TabIndex = 39;
-            // 
             // PatientsControl
             // 
             Controls.Add(splitCont);
@@ -567,5 +578,6 @@
         private Button btnPrev;
         private Label label2;
         private TextBox txtPatientNumber;
+        private Button btnGetPatientAbove25;
     }
 }
