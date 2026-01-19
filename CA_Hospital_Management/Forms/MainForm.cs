@@ -17,11 +17,12 @@ namespace CA_Hospital_Management.Forms
             MaximizeBox = false;
 
             HideTabHeaders();
-            ConfigureAccess();
+            
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            ConfigureAccess();
         }
 
 
@@ -44,9 +45,13 @@ namespace CA_Hospital_Management.Forms
 
         private void ConfigureAccess()
         {
-            if (_loggedUser.LoginRole != "Admin")
+            var role = _loggedUser.LoginRole?.Trim();
+
+            if (!string.Equals(role, "Admin", StringComparison.OrdinalIgnoreCase))
             {
-                tabAdmin.Parent = null;
+                if (tabControlMain.TabPages.Contains(tabAdmin))
+                    tabControlMain.TabPages.Remove(tabAdmin);
+                adminToolStripMenuItem.Visible = false;
             }
         }
 
@@ -78,6 +83,11 @@ namespace CA_Hospital_Management.Forms
         private void tabPage1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControlMain.SelectedTab = tabAdmin;
         }
     }
 }

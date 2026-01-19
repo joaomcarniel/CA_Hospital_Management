@@ -1,5 +1,6 @@
 using CA_Hospital_Management.Forms;
 using CA_Hospital_Management.Repositories;
+using CA_Hospital_Management.Services;
 
 namespace CA_Hospital_Management
 {
@@ -17,9 +18,9 @@ namespace CA_Hospital_Management
 
             var repo = new LoginRepository();
 
-            var user = repo.ValidateLogin(username, password);
+            var user = repo.ValidateLogin(username);
 
-            if (user != null && user.LoginIsActive == 1)
+            if (user != null && user.LoginIsActive == 1 && PasswordHasher.VerifyPassword(password, user.LoginPassword))
             {
                 this.Hide();
 

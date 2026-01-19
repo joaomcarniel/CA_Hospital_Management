@@ -7,15 +7,14 @@ namespace CA_Hospital_Management.Repositories
 {
     public class LoginRepository
     {
-        public Login? ValidateLogin(string username, string password)
+        public Login? ValidateLogin(string username)
         {
             using var context = new HospitalDbContext();
 
             return context.Logins
                 .FromSqlRaw(
-                    "EXEC ValidateLogin @Username, @Password",
-                    new SqlParameter("@Username", username),
-                    new SqlParameter("@Password", password)
+                    "EXEC ValidateLogin @Username",
+                    new SqlParameter("@Username", username)
                 )
                 .AsNoTracking()
                 .AsEnumerable()
