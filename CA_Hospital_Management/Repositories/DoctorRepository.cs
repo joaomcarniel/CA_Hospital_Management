@@ -46,7 +46,10 @@ namespace CA_Hospital_Management.Repositories
                     County = reader.GetString(reader.GetOrdinal("County")),
                     Gender = reader.GetString(reader.GetOrdinal("Gender")),
                     Pay = reader.GetDecimal(reader.GetOrdinal("Pay")),
-                    Dob = reader.GetDateTime(reader.GetOrdinal("Dob"))
+                    Dob = reader.GetDateTime(reader.GetOrdinal("Dob")),
+                    Department = reader.GetString(reader.GetOrdinal("Department")),
+                    ContractType = reader.GetString(reader.GetOrdinal("ContractType")),
+
                 });
             }
             if (reader.NextResult() && reader.Read())
@@ -63,7 +66,7 @@ namespace CA_Hospital_Management.Repositories
         internal void CreateDoctor(Doctor doctor)
         {
             context.Database.ExecuteSqlRaw(
-                "EXEC CreateDoctor @FirstName, @LastName, @Address, @County, @Dob, @Phone, @Email, @Gender, @Pay",
+                "EXEC CreateDoctor @FirstName, @LastName, @Address, @County, @Dob, @Phone, @Email, @Gender, @Pay, @Department, @ContractType",
                 new SqlParameter("@FirstName", doctor.FirstName),
                 new SqlParameter("@LastName", doctor.LastName),
                 new SqlParameter("@Address", doctor.Address),
@@ -72,7 +75,9 @@ namespace CA_Hospital_Management.Repositories
                 new SqlParameter("@Phone", doctor.Phone),
                 new SqlParameter("@Email", doctor.Email),
                 new SqlParameter("@Gender", doctor.Gender),
-                new SqlParameter("@Pay", doctor.Pay)
+                new SqlParameter("@Pay", doctor.Pay),
+                new SqlParameter("@Department", doctor.Department),
+                new SqlParameter("@ContractType", doctor.ContractType)
             );
         }
 
@@ -86,7 +91,7 @@ namespace CA_Hospital_Management.Repositories
         internal void UpdateDoctor(Doctor doctor)
         {
             context.Database.ExecuteSqlRaw(
-                "EXEC UpdateDoctor @DoctorId, @FirstName, @LastName, @Address, @County, @Dob, @Phone, @Email, @Gender, @Pay",
+                "EXEC UpdateDoctor @DoctorId, @FirstName, @LastName, @Address, @County, @Dob, @Phone, @Email, @Gender, @Pay, @Department, @ContractType",
                 new SqlParameter("@DoctorId", doctor.DoctorId),
                 new SqlParameter("@FirstName", doctor.FirstName),
                 new SqlParameter("@LastName", doctor.LastName),
@@ -96,7 +101,9 @@ namespace CA_Hospital_Management.Repositories
                 new SqlParameter("@Phone", doctor.Phone),
                 new SqlParameter("@Email", doctor.Email),
                 new SqlParameter("@Gender", doctor.Gender),
-                new SqlParameter("@Pay", doctor.Pay)
+                new SqlParameter("@Pay", doctor.Pay),
+                new SqlParameter("@Department", doctor.Department),
+                new SqlParameter("@ContractType", doctor.ContractType)
             );
         }
 

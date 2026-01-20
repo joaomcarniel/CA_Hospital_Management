@@ -27,6 +27,7 @@ namespace CA_Hospital_Management.UserControls
             LoadDoctors();
             LoadCountyCombo();
             LoadGenderCombo();
+            LoadContractCombo();
 
             CenterFormPanel();
             dgvDoctors.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -60,6 +61,12 @@ namespace CA_Hospital_Management.UserControls
             cmbGender.SelectedIndex = -1;
         }
 
+        private void LoadContractCombo()
+        {
+            cmbContract.DataSource = Enum.GetValues(typeof(ContractsEnum));
+            cmbContract.SelectedIndex = -1;
+        }
+
         private void dgvDoctors_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -75,6 +82,8 @@ namespace CA_Hospital_Management.UserControls
             txtAddress.Text = doctor.Address;
             cmbCounty.Text = doctor.County;
             cmbGender.Text = doctor.Gender;
+            cmbContract.Text = doctor.ContractType;
+            txtDepartment.Text = doctor.Department;
             numSalary.Value = doctor.Pay;
             dtpDoB.Value = doctor.Dob;
         }
@@ -96,6 +105,8 @@ namespace CA_Hospital_Management.UserControls
                     County = cmbCounty.Text,
                     Gender = cmbGender.Text,
                     Pay = numSalary.Value,
+                    Department = txtDepartment.Text,
+                    ContractType = cmbContract.Text,
                     Dob = DateTime.Parse(dtpDoB.Text)
                 };
                 _doctorRepo.CreateDoctor(doctor);
@@ -124,6 +135,8 @@ namespace CA_Hospital_Management.UserControls
                     DoctorId = _selectedDoctorId.Value,
                     FirstName = txtFirstName.Text,
                     LastName = txtLastName.Text,
+                    Department = txtDepartment.Text,
+                    ContractType = cmbContract.Text,
                     Phone = txtPhone.Text,
                     Email = txtEmail.Text,
                     Address = txtAddress.Text,
@@ -183,27 +196,14 @@ namespace CA_Hospital_Management.UserControls
             txtPhone.Clear();
             txtEmail.Clear();
             txtAddress.Clear();
+            txtDepartment.Clear();
             cmbCounty.SelectedIndex = -1;
             cmbGender.SelectedIndex = -1;
+            cmbContract.SelectedIndex = -1;
             numSalary.Value = 0;
             _selectedDoctorId = null;
-
-            lblDocFNameError.Text = "";
-            lblDocLNameError.Text = "";
-            lblDocPhoneError.Text = "";
-            lblDocEmailError.Text = "";
-            lblDocFNameError.Text = "";
-            lblDocLNameError.Text = "";
-            lblDocPhoneError.Text = "";
-            lblDocEmailError.Text = "";
-            lblDocAddrError.Text = "";
-            lblDocCountyError.Text = "";
-            lblDocGenderError.Text = "";
-            lblDocSalaryError.Text = "";
-            lblDocAddrError.Text = "";
-            lblDocCountyError.Text = "";
-            lblDocGenderError.Text = "";
-            lblDocSalaryError.Text = "";
+            lblError.Text = "";
+            lblError.Text = "";
             lblDocMessage.Text = "";
         }
 
@@ -215,58 +215,72 @@ namespace CA_Hospital_Management.UserControls
 
             if (string.IsNullOrWhiteSpace(txtFirstName.Text))
             {
-                lblDocFNameError.Text = "First name is required";
-                lblDocFNameError.Visible = true;
-                isValid = false;
+                lblError.Text = "First name is required";
+                lblError.Visible = true;
+                return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtLastName.Text))
             {
-                lblDocLNameError.Text = "Last name is required";
-                lblDocLNameError.Visible = true;
-                isValid = false;
+                lblError.Text = "Last name is required";
+                lblError.Visible = true;
+                return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtPhone.Text))
             {
-                lblDocPhoneError.Text = "Phone is required";
-                lblDocPhoneError.Visible = true;
-                isValid = false;
+                lblError.Text = "Phone is required";
+                lblError.Visible = true;
+                return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
-                lblDocEmailError.Text = "Email is required";
-                lblDocEmailError.Visible = true;
-                isValid = false;
+                lblError.Text = "Email is required";
+                lblError.Visible = true;
+                return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtAddress.Text))
             {
-                lblDocAddrError.Text = "Address is required";
-                lblDocAddrError.Visible = true;
-                isValid = false;
+                lblError.Text = "Address is required";
+                lblError.Visible = true;
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtDepartment.Text))
+            {
+                lblError.Text = "Department is required";
+                lblError.Visible = true;
+                return false;
             }
 
             if (cmbCounty.SelectedIndex == -1)
             {
-                lblDocCountyError.Text = "County is required";
-                lblDocCountyError.Visible = true;
-                isValid = false;
+                lblError.Text = "County is required";
+                lblError.Visible = true;
+                return false;
+            }
+
+            if (cmbContract.SelectedIndex == -1)
+            {
+                lblError.Text = "Contract is required";
+                lblError.Visible = true;
+                return false;
             }
 
             if (cmbGender.SelectedIndex == -1)
             {
-                lblDocGenderError.Text = "Gender is required";
-                lblDocGenderError.Visible = true;
-                isValid = false;
+                lblError.Text = "Gender is required";
+                lblError.Visible = true;
+                return false;
             }
 
             if (numSalary.Value <= 0)
             {
-                lblDocSalaryError.Text = "Salary must be greater than zero";
-                lblDocSalaryError.Visible = true;
-                isValid = false;
+                lblError.Text = "Salary must be greater than zero";
+                lblError.Visible = true;
+                return false;
             }
 
             return isValid;
@@ -274,14 +288,7 @@ namespace CA_Hospital_Management.UserControls
 
         private void HideDoctorErrors()
         {
-            lblDocFNameError.Visible = false;
-            lblDocLNameError.Visible = false;
-            lblDocPhoneError.Visible = false;
-            lblDocEmailError.Visible = false;
-            lblDocAddrError.Visible = false;
-            lblDocCountyError.Visible = false;
-            lblDocGenderError.Visible = false;
-            lblDocSalaryError.Visible = false;
+            lblError.Visible = false;
             lblDocMessage.Visible = false;
         }
 

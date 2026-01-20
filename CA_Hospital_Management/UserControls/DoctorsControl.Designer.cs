@@ -26,14 +26,7 @@
         private Button btnClear;
 
         private Label lblDocMessage;
-        private Label lblDocFNameError;
-        private Label lblDocLNameError;
-        private Label lblDocPhoneError;
-        private Label lblDocEmailError;
-        private Label lblDocAddrError;
-        private Label lblDocCountyError;
-        private Label lblDocGenderError;
-        private Label lblDocSalaryError;
+        private Label lblError;
 
         private Label lblFirstName;
         private Label lblLastName;
@@ -59,6 +52,10 @@
         {
             splitDoctors = new SplitContainer();
             panelForm = new Panel();
+            label4 = new Label();
+            cmbContract = new ComboBox();
+            txtDepartment = new TextBox();
+            label3 = new Label();
             label2 = new Label();
             lblPagination = new Label();
             btnNext = new Button();
@@ -66,7 +63,6 @@
             label1 = new Label();
             txtSearchDoctor = new TextBox();
             btnGetDoctor = new Button();
-            lblDocFNameError = new Label();
             lblFirstName = new Label();
             btnCreateDoctor = new Button();
             txtFirstName = new TextBox();
@@ -74,28 +70,22 @@
             lblLastName = new Label();
             txtLastName = new TextBox();
             btnClear = new Button();
-            lblDocLNameError = new Label();
             btnDelete = new Button();
             lblPhone = new Label();
             btnUpdateDoctor = new Button();
             txtPhone = new TextBox();
             dtpDoB = new DateTimePicker();
-            lblDocPhoneError = new Label();
             lblDob = new Label();
             lblEmail = new Label();
-            lblDocSalaryError = new Label();
+            lblError = new Label();
             txtEmail = new TextBox();
             numSalary = new NumericUpDown();
-            lblDocEmailError = new Label();
             lblSalary = new Label();
             lblAddress = new Label();
-            lblDocGenderError = new Label();
             txtAddress = new TextBox();
             cmbGender = new ComboBox();
-            lblDocAddrError = new Label();
             lblGender = new Label();
             lblCounty = new Label();
-            lblDocCountyError = new Label();
             cmbCounty = new ComboBox();
             dgvDoctors = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)splitDoctors).BeginInit();
@@ -130,6 +120,10 @@
             // 
             // panelForm
             // 
+            panelForm.Controls.Add(label4);
+            panelForm.Controls.Add(cmbContract);
+            panelForm.Controls.Add(txtDepartment);
+            panelForm.Controls.Add(label3);
             panelForm.Controls.Add(label2);
             panelForm.Controls.Add(lblPagination);
             panelForm.Controls.Add(btnNext);
@@ -137,7 +131,6 @@
             panelForm.Controls.Add(label1);
             panelForm.Controls.Add(txtSearchDoctor);
             panelForm.Controls.Add(btnGetDoctor);
-            panelForm.Controls.Add(lblDocFNameError);
             panelForm.Controls.Add(lblFirstName);
             panelForm.Controls.Add(btnCreateDoctor);
             panelForm.Controls.Add(txtFirstName);
@@ -145,33 +138,62 @@
             panelForm.Controls.Add(lblLastName);
             panelForm.Controls.Add(txtLastName);
             panelForm.Controls.Add(btnClear);
-            panelForm.Controls.Add(lblDocLNameError);
             panelForm.Controls.Add(btnDelete);
             panelForm.Controls.Add(lblPhone);
             panelForm.Controls.Add(btnUpdateDoctor);
             panelForm.Controls.Add(txtPhone);
             panelForm.Controls.Add(dtpDoB);
-            panelForm.Controls.Add(lblDocPhoneError);
             panelForm.Controls.Add(lblDob);
             panelForm.Controls.Add(lblEmail);
-            panelForm.Controls.Add(lblDocSalaryError);
+            panelForm.Controls.Add(lblError);
             panelForm.Controls.Add(txtEmail);
             panelForm.Controls.Add(numSalary);
-            panelForm.Controls.Add(lblDocEmailError);
             panelForm.Controls.Add(lblSalary);
             panelForm.Controls.Add(lblAddress);
-            panelForm.Controls.Add(lblDocGenderError);
             panelForm.Controls.Add(txtAddress);
             panelForm.Controls.Add(cmbGender);
-            panelForm.Controls.Add(lblDocAddrError);
             panelForm.Controls.Add(lblGender);
             panelForm.Controls.Add(lblCounty);
-            panelForm.Controls.Add(lblDocCountyError);
             panelForm.Controls.Add(cmbCounty);
             panelForm.Location = new Point(17, 3);
             panelForm.Name = "panelForm";
             panelForm.Size = new Size(1524, 589);
             panelForm.TabIndex = 32;
+            // 
+            // label4
+            // 
+            label4.Location = new Point(778, 175);
+            label4.Name = "label4";
+            label4.Size = new Size(100, 23);
+            label4.TabIndex = 41;
+            label4.Text = "Contract";
+            label4.TextAlign = ContentAlignment.TopRight;
+            // 
+            // cmbContract
+            // 
+            cmbContract.BackColor = Color.FromArgb(255, 224, 192);
+            cmbContract.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbContract.Location = new Point(878, 172);
+            cmbContract.Name = "cmbContract";
+            cmbContract.Size = new Size(179, 28);
+            cmbContract.TabIndex = 42;
+            // 
+            // txtDepartment
+            // 
+            txtDepartment.BackColor = Color.FromArgb(255, 224, 192);
+            txtDepartment.Location = new Point(416, 175);
+            txtDepartment.Name = "txtDepartment";
+            txtDepartment.Size = new Size(327, 27);
+            txtDepartment.TabIndex = 40;
+            // 
+            // label3
+            // 
+            label3.Location = new Point(325, 175);
+            label3.Name = "label3";
+            label3.Size = new Size(89, 23);
+            label3.TabIndex = 39;
+            label3.Text = "Department";
+            label3.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label2
             // 
@@ -180,9 +202,9 @@
             label2.FlatStyle = FlatStyle.Flat;
             label2.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(620, 17);
+            label2.Location = new Point(325, 17);
             label2.Name = "label2";
-            label2.Size = new Size(285, 57);
+            label2.Size = new Size(880, 57);
             label2.TabIndex = 38;
             label2.Text = "Doctors";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -190,7 +212,7 @@
             // lblPagination
             // 
             lblPagination.ForeColor = Color.Black;
-            lblPagination.Location = new Point(639, 552);
+            lblPagination.Location = new Point(637, 552);
             lblPagination.Name = "lblPagination";
             lblPagination.Size = new Size(256, 23);
             lblPagination.TabIndex = 37;
@@ -201,7 +223,7 @@
             btnNext.BackColor = SystemColors.MenuHighlight;
             btnNext.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnNext.ForeColor = Color.White;
-            btnNext.Location = new Point(901, 543);
+            btnNext.Location = new Point(899, 543);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(92, 40);
             btnNext.TabIndex = 36;
@@ -215,7 +237,7 @@
             btnPrev.FlatAppearance.BorderSize = 4;
             btnPrev.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPrev.ForeColor = Color.White;
-            btnPrev.Location = new Point(541, 543);
+            btnPrev.Location = new Point(539, 543);
             btnPrev.Name = "btnPrev";
             btnPrev.Size = new Size(92, 40);
             btnPrev.TabIndex = 35;
@@ -225,7 +247,7 @@
             // 
             // label1
             // 
-            label1.Location = new Point(476, 457);
+            label1.Location = new Point(474, 457);
             label1.Name = "label1";
             label1.Size = new Size(122, 23);
             label1.TabIndex = 34;
@@ -235,7 +257,7 @@
             // txtSearchDoctor
             // 
             txtSearchDoctor.BackColor = Color.FromArgb(255, 224, 192);
-            txtSearchDoctor.Location = new Point(602, 454);
+            txtSearchDoctor.Location = new Point(600, 454);
             txtSearchDoctor.Name = "txtSearchDoctor";
             txtSearchDoctor.Size = new Size(327, 27);
             txtSearchDoctor.TabIndex = 33;
@@ -245,22 +267,13 @@
             btnGetDoctor.BackColor = SystemColors.MenuHighlight;
             btnGetDoctor.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnGetDoctor.ForeColor = Color.White;
-            btnGetDoctor.Location = new Point(937, 446);
+            btnGetDoctor.Location = new Point(935, 446);
             btnGetDoctor.Name = "btnGetDoctor";
             btnGetDoctor.Size = new Size(123, 42);
             btnGetDoctor.TabIndex = 32;
             btnGetDoctor.Text = "Search Doctor";
             btnGetDoctor.UseVisualStyleBackColor = false;
             btnGetDoctor.Click += btnGetDoctor_Click;
-            // 
-            // lblDocFNameError
-            // 
-            lblDocFNameError.ForeColor = Color.Red;
-            lblDocFNameError.Location = new Point(416, 124);
-            lblDocFNameError.Name = "lblDocFNameError";
-            lblDocFNameError.Size = new Size(100, 23);
-            lblDocFNameError.TabIndex = 2;
-            lblDocFNameError.Visible = false;
             // 
             // lblFirstName
             // 
@@ -269,13 +282,14 @@
             lblFirstName.Size = new Size(100, 23);
             lblFirstName.TabIndex = 0;
             lblFirstName.Text = "First Name";
+            lblFirstName.TextAlign = ContentAlignment.MiddleRight;
             // 
             // btnCreateDoctor
             // 
             btnCreateDoctor.BackColor = SystemColors.MenuHighlight;
             btnCreateDoctor.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCreateDoctor.ForeColor = Color.White;
-            btnCreateDoctor.Location = new Point(541, 394);
+            btnCreateDoctor.Location = new Point(539, 394);
             btnCreateDoctor.Name = "btnCreateDoctor";
             btnCreateDoctor.Size = new Size(92, 40);
             btnCreateDoctor.TabIndex = 26;
@@ -294,7 +308,7 @@
             // lblDocMessage
             // 
             lblDocMessage.ForeColor = Color.Red;
-            lblDocMessage.Location = new Point(476, 507);
+            lblDocMessage.Location = new Point(474, 507);
             lblDocMessage.Name = "lblDocMessage";
             lblDocMessage.Size = new Size(581, 23);
             lblDocMessage.TabIndex = 31;
@@ -309,6 +323,7 @@
             lblLastName.Size = new Size(100, 23);
             lblLastName.TabIndex = 3;
             lblLastName.Text = "Last Name";
+            lblLastName.TextAlign = ContentAlignment.TopRight;
             // 
             // txtLastName
             // 
@@ -323,7 +338,7 @@
             btnClear.BackColor = SystemColors.MenuHighlight;
             btnClear.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClear.ForeColor = Color.White;
-            btnClear.Location = new Point(901, 394);
+            btnClear.Location = new Point(899, 394);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(92, 42);
             btnClear.TabIndex = 29;
@@ -331,20 +346,12 @@
             btnClear.UseVisualStyleBackColor = false;
             btnClear.Click += btnClear_Click;
             // 
-            // lblDocLNameError
-            // 
-            lblDocLNameError.ForeColor = Color.Red;
-            lblDocLNameError.Location = new Point(878, 124);
-            lblDocLNameError.Name = "lblDocLNameError";
-            lblDocLNameError.Size = new Size(100, 23);
-            lblDocLNameError.TabIndex = 5;
-            // 
             // btnDelete
             // 
             btnDelete.BackColor = Color.Red;
             btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(781, 394);
+            btnDelete.Location = new Point(779, 394);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(92, 40);
             btnDelete.TabIndex = 28;
@@ -354,18 +361,19 @@
             // 
             // lblPhone
             // 
-            lblPhone.Location = new Point(314, 153);
+            lblPhone.Location = new Point(314, 136);
             lblPhone.Name = "lblPhone";
             lblPhone.Size = new Size(100, 23);
             lblPhone.TabIndex = 6;
             lblPhone.Text = "Phone";
+            lblPhone.TextAlign = ContentAlignment.MiddleRight;
             // 
             // btnUpdateDoctor
             // 
             btnUpdateDoctor.BackColor = Color.Lime;
             btnUpdateDoctor.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnUpdateDoctor.ForeColor = Color.White;
-            btnUpdateDoctor.Location = new Point(661, 394);
+            btnUpdateDoctor.Location = new Point(659, 394);
             btnUpdateDoctor.Name = "btnUpdateDoctor";
             btnUpdateDoctor.Size = new Size(92, 40);
             btnUpdateDoctor.TabIndex = 27;
@@ -376,7 +384,7 @@
             // txtPhone
             // 
             txtPhone.BackColor = Color.FromArgb(255, 224, 192);
-            txtPhone.Location = new Point(416, 150);
+            txtPhone.Location = new Point(416, 133);
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(327, 27);
             txtPhone.TabIndex = 7;
@@ -384,48 +392,42 @@
             // dtpDoB
             // 
             dtpDoB.CalendarMonthBackground = Color.FromArgb(255, 224, 192);
-            dtpDoB.Location = new Point(878, 318);
+            dtpDoB.Location = new Point(878, 315);
             dtpDoB.Name = "dtpDoB";
             dtpDoB.Size = new Size(327, 27);
             dtpDoB.TabIndex = 25;
             // 
-            // lblDocPhoneError
-            // 
-            lblDocPhoneError.ForeColor = Color.Red;
-            lblDocPhoneError.Location = new Point(416, 180);
-            lblDocPhoneError.Name = "lblDocPhoneError";
-            lblDocPhoneError.Size = new Size(280, 23);
-            lblDocPhoneError.TabIndex = 8;
-            // 
             // lblDob
             // 
-            lblDob.Location = new Point(778, 321);
+            lblDob.Location = new Point(778, 318);
             lblDob.Name = "lblDob";
             lblDob.Size = new Size(100, 23);
             lblDob.TabIndex = 24;
             lblDob.Text = "Date of Birth";
+            lblDob.TextAlign = ContentAlignment.TopRight;
             // 
             // lblEmail
             // 
-            lblEmail.Location = new Point(778, 153);
+            lblEmail.Location = new Point(778, 136);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(100, 23);
             lblEmail.TabIndex = 9;
             lblEmail.Text = "Email";
+            lblEmail.TextAlign = ContentAlignment.TopRight;
             // 
-            // lblDocSalaryError
+            // lblError
             // 
-            lblDocSalaryError.ForeColor = Color.Red;
-            lblDocSalaryError.Location = new Point(416, 348);
-            lblDocSalaryError.Name = "lblDocSalaryError";
-            lblDocSalaryError.Size = new Size(259, 23);
-            lblDocSalaryError.TabIndex = 23;
-            lblDocSalaryError.Click += lblDocSalaryError_Click;
+            lblError.ForeColor = Color.Red;
+            lblError.Location = new Point(325, 357);
+            lblError.Name = "lblError";
+            lblError.Size = new Size(880, 23);
+            lblError.TabIndex = 23;
+            lblError.Click += lblDocSalaryError_Click;
             // 
             // txtEmail
             // 
             txtEmail.BackColor = Color.FromArgb(255, 224, 192);
-            txtEmail.Location = new Point(878, 150);
+            txtEmail.Location = new Point(878, 133);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(327, 27);
             txtEmail.TabIndex = 10;
@@ -433,47 +435,33 @@
             // numSalary
             // 
             numSalary.BackColor = Color.FromArgb(255, 224, 192);
-            numSalary.Location = new Point(416, 318);
+            numSalary.Location = new Point(416, 315);
             numSalary.Name = "numSalary";
             numSalary.Size = new Size(179, 27);
             numSalary.TabIndex = 22;
             // 
-            // lblDocEmailError
-            // 
-            lblDocEmailError.ForeColor = Color.Red;
-            lblDocEmailError.Location = new Point(878, 180);
-            lblDocEmailError.Name = "lblDocEmailError";
-            lblDocEmailError.Size = new Size(280, 23);
-            lblDocEmailError.TabIndex = 11;
-            // 
             // lblSalary
             // 
-            lblSalary.Location = new Point(314, 321);
+            lblSalary.Location = new Point(314, 318);
             lblSalary.Name = "lblSalary";
             lblSalary.Size = new Size(100, 23);
             lblSalary.TabIndex = 21;
             lblSalary.Text = "Salary";
+            lblSalary.TextAlign = ContentAlignment.MiddleRight;
             // 
             // lblAddress
             // 
-            lblAddress.Location = new Point(314, 209);
+            lblAddress.Location = new Point(314, 225);
             lblAddress.Name = "lblAddress";
             lblAddress.Size = new Size(100, 23);
             lblAddress.TabIndex = 12;
             lblAddress.Text = "Address";
-            // 
-            // lblDocGenderError
-            // 
-            lblDocGenderError.ForeColor = Color.Red;
-            lblDocGenderError.Location = new Point(878, 291);
-            lblDocGenderError.Name = "lblDocGenderError";
-            lblDocGenderError.Size = new Size(280, 23);
-            lblDocGenderError.TabIndex = 20;
+            lblAddress.TextAlign = ContentAlignment.MiddleRight;
             // 
             // txtAddress
             // 
             txtAddress.BackColor = Color.FromArgb(255, 224, 192);
-            txtAddress.Location = new Point(416, 206);
+            txtAddress.Location = new Point(416, 222);
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(789, 27);
             txtAddress.TabIndex = 13;
@@ -482,48 +470,34 @@
             // 
             cmbGender.BackColor = Color.FromArgb(255, 224, 192);
             cmbGender.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbGender.Location = new Point(878, 260);
+            cmbGender.Location = new Point(878, 266);
             cmbGender.Name = "cmbGender";
             cmbGender.Size = new Size(179, 28);
             cmbGender.TabIndex = 19;
             // 
-            // lblDocAddrError
-            // 
-            lblDocAddrError.ForeColor = Color.Red;
-            lblDocAddrError.Location = new Point(416, 236);
-            lblDocAddrError.Name = "lblDocAddrError";
-            lblDocAddrError.Size = new Size(280, 23);
-            lblDocAddrError.TabIndex = 14;
-            // 
             // lblGender
             // 
-            lblGender.Location = new Point(778, 263);
+            lblGender.Location = new Point(778, 269);
             lblGender.Name = "lblGender";
             lblGender.Size = new Size(100, 23);
             lblGender.TabIndex = 18;
             lblGender.Text = "Gender";
+            lblGender.TextAlign = ContentAlignment.TopRight;
             // 
             // lblCounty
             // 
-            lblCounty.Location = new Point(314, 263);
+            lblCounty.Location = new Point(314, 269);
             lblCounty.Name = "lblCounty";
             lblCounty.Size = new Size(100, 23);
             lblCounty.TabIndex = 15;
             lblCounty.Text = "County";
-            // 
-            // lblDocCountyError
-            // 
-            lblDocCountyError.ForeColor = Color.Red;
-            lblDocCountyError.Location = new Point(416, 291);
-            lblDocCountyError.Name = "lblDocCountyError";
-            lblDocCountyError.Size = new Size(259, 23);
-            lblDocCountyError.TabIndex = 17;
+            lblCounty.TextAlign = ContentAlignment.MiddleRight;
             // 
             // cmbCounty
             // 
             cmbCounty.BackColor = Color.FromArgb(255, 224, 192);
             cmbCounty.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbCounty.Location = new Point(416, 260);
+            cmbCounty.Location = new Point(416, 266);
             cmbCounty.Name = "cmbCounty";
             cmbCounty.Size = new Size(179, 28);
             cmbCounty.TabIndex = 16;
@@ -569,5 +543,9 @@
         private Button btnNext;
         private Button btnPrev;
         private Label label2;
+        private Label label4;
+        private ComboBox cmbContract;
+        private TextBox txtDepartment;
+        private Label label3;
     }
 }
