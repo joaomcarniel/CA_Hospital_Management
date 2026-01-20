@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CA_Hospital_Management.Models
+namespace CA_Hospital_Management.Models.Entities
 {
     public abstract class Person
     {

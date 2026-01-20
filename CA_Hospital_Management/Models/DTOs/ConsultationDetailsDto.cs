@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CA_Hospital_Management.Models
+namespace CA_Hospital_Management.Models.DTOs
 {
     public class ConsultationDetailsDto
     {

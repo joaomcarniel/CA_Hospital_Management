@@ -1,4 +1,6 @@
 ﻿using CA_Hospital_Management.Models;
+using CA_Hospital_Management.Models.DTOs;
+using CA_Hospital_Management.Models.Entities;
 using CA_Hospital_Management.Repositories;
 
 namespace CA_Hospital_Management.UserControls

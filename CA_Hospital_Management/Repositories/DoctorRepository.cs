@@ -1,5 +1,6 @@
 ﻿using CA_Hospital_Management.Data;
-using CA_Hospital_Management.Models;
+using CA_Hospital_Management.Models.DTOs;
+using CA_Hospital_Management.Models.Entities;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;

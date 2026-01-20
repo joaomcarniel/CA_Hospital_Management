@@ -1,4 +1,4 @@
-﻿using CA_Hospital_Management.Models;
+﻿using CA_Hospital_Management.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CA_Hospital_Management.Data

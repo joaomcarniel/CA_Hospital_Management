@@ -1,4 +1,5 @@
-﻿using CA_Hospital_Management.Models;
+﻿using CA_Hospital_Management.Models.Entities;
+using CA_Hospital_Management.Models.Enums;
 using CA_Hospital_Management.Repositories;
 using HospitalManagement.Repositories;
 
@@ -49,24 +50,13 @@ namespace CA_Hospital_Management.UserControls
 
         private void LoadCountyCombo()
         {
-            cmbCounty.Items.Clear();
-            cmbCounty.Items.AddRange(new string[]
-            {
-                "Carlow","Cavan","Clare","Cork","Donegal","Dublin","Galway","Kerry",
-                "Kildare","Kilkenny","Laois","Leitrim","Limerick","Longford","Louth",
-                "Mayo","Meath","Monaghan","Offaly","Roscommon","Sligo","Tipperary",
-                "Waterford","Westmeath","Wexford","Wicklow"
-            });
+            cmbCounty.DataSource = Enum.GetValues(typeof(CountiesEnum));
             cmbCounty.SelectedIndex = -1;
         }
 
         private void LoadGenderCombo()
         {
-            cmbGender.Items.Clear();
-            cmbGender.Items.AddRange(new string[]
-            {
-                "Male", "Female", "Other", "Prefer not to say"
-            });
+            cmbGender.DataSource = Enum.GetValues(typeof(GenderEnum));
             cmbGender.SelectedIndex = -1;
         }
 

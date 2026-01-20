@@ -1,4 +1,4 @@
-﻿namespace CA_Hospital_Management.Models
+﻿namespace CA_Hospital_Management.Models.Entities
 {
     public class Nurse : Staff
     {
