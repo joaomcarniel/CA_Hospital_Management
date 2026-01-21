@@ -72,32 +72,13 @@ namespace CA_Hospital_Management.UserControls
 
         private bool ValidateForm()
         {
-            bool isValid = true;
-            if (string.IsNullOrWhiteSpace(txtUsername.Text))
-            {
-                lblError.Text = "Username is required";
-                lblError.Visible = true;
-                isValid = false;
-            }
-            if (string.IsNullOrWhiteSpace(txtPassword.Text))
-            {
-                lblError.Text = "Password is required";
-                lblError.Visible = true;
-                isValid = false;
-            }
-            if (string.IsNullOrWhiteSpace(cmbActive.Text))
-            {
-                lblError.Text = "Active is required";
-                lblError.Visible = true;
-                isValid = false;
-            }
-            if (string.IsNullOrWhiteSpace(cmbRole.Text))
-            {
-                lblError.Text = "Role is required";
-                lblError.Visible = true;
-                isValid = false;
-            }
-            return isValid;
+            Dictionary<string, String> fields = new Dictionary<string, String>();
+
+            fields.Add("Username", txtUsername.Text);
+            fields.Add("Password", txtPassword.Text);
+            fields.Add("Active", cmbActive.Text);
+            fields.Add("Role", cmbRole.Text);
+            return FormsValidator.ValidateForm(fields, lblError);
         }
 
         private void ClearForm()

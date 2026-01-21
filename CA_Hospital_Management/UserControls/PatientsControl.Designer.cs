@@ -31,7 +31,7 @@
         private Label lblAddrError;
         private Label lblCountyError;
         private Label lblGenderError;
-        private Label lblSalaryError;
+        private Label lblError;
 
         private Label lblFirstName;
         private Label lblLastName;
@@ -83,7 +83,7 @@
             lblPhoneError = new Label();
             lblDob = new Label();
             lblEmail = new Label();
-            lblSalaryError = new Label();
+            lblError = new Label();
             txtEmail = new TextBox();
             lblEmailError = new Label();
             lblHoursWorked = new Label();
@@ -153,7 +153,7 @@
             panelForm.Controls.Add(lblPhoneError);
             panelForm.Controls.Add(lblDob);
             panelForm.Controls.Add(lblEmail);
-            panelForm.Controls.Add(lblSalaryError);
+            panelForm.Controls.Add(lblError);
             panelForm.Controls.Add(txtEmail);
             panelForm.Controls.Add(lblEmailError);
             panelForm.Controls.Add(lblHoursWorked);
@@ -431,13 +431,13 @@
             lblEmail.TabIndex = 9;
             lblEmail.Text = "Email";
             // 
-            // lblSalaryError
+            // lblError
             // 
-            lblSalaryError.ForeColor = Color.Red;
-            lblSalaryError.Location = new Point(416, 348);
-            lblSalaryError.Name = "lblSalaryError";
-            lblSalaryError.Size = new Size(259, 23);
-            lblSalaryError.TabIndex = 23;
+            lblError.ForeColor = Color.Red;
+            lblError.Location = new Point(416, 348);
+            lblError.Name = "lblError";
+            lblError.Size = new Size(259, 23);
+            lblError.TabIndex = 23;
             // 
             // txtEmail
             // 

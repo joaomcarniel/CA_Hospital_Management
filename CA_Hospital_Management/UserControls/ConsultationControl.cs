@@ -2,7 +2,9 @@
 using CA_Hospital_Management.Models.DTOs;
 using CA_Hospital_Management.Models.Entities;
 using CA_Hospital_Management.Repositories;
+using CA_Hospital_Management.Services;
 using HospitalManagement.Repositories;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -177,64 +179,22 @@ namespace CA_Hospital_Management.UserControls
             lblLDoctor.Text = "";
             lblReasonError.Text = "";
             lblDiagnosisError.Text = "";
-            lblNotesError.Text = "";
+            lblError.Text = "";
             lblDiagnosisError.Text = "";
-            lblNotesError.Text = "";
+            lblError.Text = "";
             lblMessage.Text = "";
         }
 
         private bool ValidateForm()
         {
-            bool isValid = true;
+            Dictionary<string, String> fields = new Dictionary<string, String>();
 
-            HideErrors();
-
-            if (string.IsNullOrWhiteSpace(txtPatient.Text))
-            {
-                lblPatient.Text = "Patient is required";
-                lblPatient.Visible = true;
-                isValid = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtDoctor.Text))
-            {
-                lblLDoctor.Text = "Doctor is required";
-                lblLDoctor.Visible = true;
-                isValid = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtReason.Text))
-            {
-                lblReasonError.Text = "Reason is required";
-                lblReasonError.Visible = true;
-                isValid = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtDiagnosis.Text))
-            {
-                lblDiagnosisError.Text = "Diagnosis is required";
-                lblDiagnosisError.Visible = true;
-                isValid = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtNotes.Text))
-            {
-                lblNotesError.Text = "Notes is required";
-                lblNotesError.Visible = true;
-                isValid = false;
-            }
-
-            return isValid;
-        }
-
-        private void HideErrors()
-        {
-            lblPatient.Visible = false;
-            lblLDoctor.Visible = false;
-            lblReasonError.Visible = false;
-            lblDiagnosisError.Visible = false;
-            lblNotesError.Visible = false;
-            lblMessage.Visible = false;
+            fields.Add("Patient", txtPatient.Text);
+            fields.Add("Doctor", txtDoctor.Text);
+            fields.Add("Reason", txtReason.Text);
+            fields.Add("Diagnosis", txtDiagnosis.Text);
+            fields.Add("Notes", txtNotes.Text);
+            return FormsValidator.ValidateForm(fields, lblError);
         }
 
         private void CenterFormPanel()
@@ -245,29 +205,9 @@ namespace CA_Hospital_Management.UserControls
             panelForm.Top = (splitCont.Panel1.Height - panelForm.Height) / 2;
         }
 
-        private void splitCont_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblMessage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblSalaryError_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void splitCont_Panel1_Resize(object sender, EventArgs e)
         {
             CenterFormPanel();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnGetConsultation_Click(object sender, EventArgs e)

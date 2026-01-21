@@ -1,5 +1,4 @@
 ﻿using CA_Hospital_Management.Models.Entities;
-using CA_Hospital_Management.Models.Enums;
 using CA_Hospital_Management.Repositories;
 using CA_Hospital_Management.Services;
 using HospitalManagement.Repositories;
@@ -188,90 +187,29 @@ namespace CA_Hospital_Management.UserControls
             lblAddrError.Text = "";
             lblCountyError.Text = "";
             lblGenderError.Text = "";
-            lblSalaryError.Text = "";
+            lblError.Text = "";
             lblAddrError.Text = "";
             lblCountyError.Text = "";
             lblGenderError.Text = "";
-            lblSalaryError.Text = "";
+            lblError.Text = "";
             lblMessage.Text = "";
         }
 
         private bool ValidateForm()
         {
-            bool isValid = true;
+            Dictionary<string, String> fields = new Dictionary<string, String>();
+            string countyValidator = cmbCounty.SelectedIndex == -1 ? "" : "County";
+            string genderValidator = cmbGender.SelectedIndex == -1 ? "" : "Gender";
 
-            HideErrors();
-
-            if (string.IsNullOrWhiteSpace(txtFirstName.Text))
-            {
-                lblFNameError.Text = "First name is required";
-                lblFNameError.Visible = true;
-                isValid = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtLastName.Text))
-            {
-                lblLNameError.Text = "Last name is required";
-                lblLNameError.Visible = true;
-                isValid = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtPhone.Text))
-            {
-                lblPhoneError.Text = "Phone is required";
-                lblPhoneError.Visible = true;
-                isValid = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtEmail.Text))
-            {
-                lblEmailError.Text = "Email is required";
-                lblEmailError.Visible = true;
-                isValid = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtAddress.Text))
-            {
-                lblAddrError.Text = "Address is required";
-                lblAddrError.Visible = true;
-                isValid = false;
-            }
-
-            if (cmbCounty.SelectedIndex == -1)
-            {
-                lblCountyError.Text = "County is required";
-                lblCountyError.Visible = true;
-                isValid = false;
-            }
-
-            if (cmbGender.SelectedIndex == -1)
-            {
-                lblGenderError.Text = "Gender is required";
-                lblGenderError.Visible = true;
-                isValid = false;
-            }
-
-            if (String.IsNullOrEmpty(txtPatientNumber.Text))
-            {
-                lblSalaryError.Text = "Patient Number must be defined";
-                lblSalaryError.Visible = true;
-                isValid = false;
-            }
-
-            return isValid;
-        }
-
-        private void HideErrors()
-        {
-            lblFNameError.Visible = false;
-            lblLNameError.Visible = false;
-            lblPhoneError.Visible = false;
-            lblEmailError.Visible = false;
-            lblAddrError.Visible = false;
-            lblCountyError.Visible = false;
-            lblGenderError.Visible = false;
-            lblSalaryError.Visible = false;
-            lblMessage.Visible = false;
+            fields.Add("First Name", txtFirstName.Text);
+            fields.Add("Last Name", txtLastName.Text);
+            fields.Add("Patient Number", txtPatientNumber.Text);
+            fields.Add("Phone", txtPhone.Text);
+            fields.Add("Email", txtEmail.Text);
+            fields.Add("Address", txtAddress.Text);
+            fields.Add("County", countyValidator);
+            fields.Add("Gender", genderValidator);
+            return FormsValidator.ValidateForm(fields, lblError);
         }
 
         private void CenterFormPanel()

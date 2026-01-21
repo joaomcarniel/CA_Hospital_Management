@@ -22,7 +22,7 @@
         private Label lblLDoctor;
         private Label lblReasonError;
         private Label lblDiagnosisError;
-        private Label lblNotesError;
+        private Label lblError;
 
         private Label lblPatientId;
         private Label lblLastName;
@@ -73,7 +73,7 @@
             lblHoursWorked = new Label();
             lblAddress = new Label();
             lblDiagnosisError = new Label();
-            lblNotesError = new Label();
+            lblError = new Label();
             mainDgv = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)splitCont).BeginInit();
             splitCont.Panel1.SuspendLayout();
@@ -94,7 +94,6 @@
             // 
             splitCont.Panel1.AutoScroll = true;
             splitCont.Panel1.Controls.Add(panelForm);
-            splitCont.Panel1.Paint += splitCont_Panel1_Paint;
             splitCont.Panel1.Resize += splitCont_Panel1_Resize;
             // 
             // splitCont.Panel2
@@ -134,7 +133,7 @@
             panelForm.Controls.Add(lblHoursWorked);
             panelForm.Controls.Add(lblAddress);
             panelForm.Controls.Add(lblDiagnosisError);
-            panelForm.Controls.Add(lblNotesError);
+            panelForm.Controls.Add(lblError);
             panelForm.Font = new Font("Segoe UI", 9F);
             panelForm.Location = new Point(17, 3);
             panelForm.Name = "panelForm";
@@ -221,7 +220,6 @@
             label1.Size = new Size(122, 23);
             label1.TabIndex = 34;
             label1.Text = "Search By Patient";
-            label1.Click += label1_Click;
             // 
             // txtSearch
             // 
@@ -294,7 +292,6 @@
             lblMessage.TabIndex = 31;
             lblMessage.TextAlign = ContentAlignment.MiddleCenter;
             lblMessage.Visible = false;
-            lblMessage.Click += lblMessage_Click;
             // 
             // lblLastName
             // 
@@ -433,13 +430,13 @@
             lblDiagnosisError.Size = new Size(789, 23);
             lblDiagnosisError.TabIndex = 14;
             // 
-            // lblNotesError
+            // lblError
             // 
-            lblNotesError.ForeColor = Color.Red;
-            lblNotesError.Location = new Point(416, 291);
-            lblNotesError.Name = "lblNotesError";
-            lblNotesError.Size = new Size(789, 23);
-            lblNotesError.TabIndex = 17;
+            lblError.ForeColor = Color.Red;
+            lblError.Location = new Point(416, 368);
+            lblError.Name = "lblError";
+            lblError.Size = new Size(789, 23);
+            lblError.TabIndex = 17;
             // 
             // mainDgv
             // 

@@ -2,6 +2,8 @@
 using CA_Hospital_Management.Models.DTOs;
 using CA_Hospital_Management.Models.Entities;
 using CA_Hospital_Management.Repositories;
+using CA_Hospital_Management.Services;
+using Microsoft.Data.SqlClient;
 
 namespace CA_Hospital_Management.UserControls
 {
@@ -166,62 +168,21 @@ namespace CA_Hospital_Management.UserControls
             lblNurseIdError.Text = "";
             lblConsultationError.Text = "";
             lblReasonError.Text = "";
-            lblNotesError.Text = "";
-            lblNotesError.Text = "";
+            lblError.Text = "";
+            lblError.Text = "";
             lblMessage.Text = "";
         }
 
         private bool ValidateForm()
         {
-            bool isValid = true;
+            Dictionary<string, String> fields = new Dictionary<string, String>();
 
-            HideErrors();
-
-            if (string.IsNullOrWhiteSpace(txtPatientId.Text))
-            {
-                lblPatientIdError.Text = "Patient is required";
-                lblPatientIdError.Visible = true;
-                isValid = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtNurseId.Text))
-            {
-                lblNurseIdError.Text = "Nurse is required";
-                lblNurseIdError.Visible = true;
-                isValid = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtConsultationId.Text))
-            {
-                lblConsultationError.Text = "Consultation is required";
-                lblConsultationError.Visible = true;
-                isValid = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtReason.Text))
-            {
-                lblReasonError.Text = "Reason is required";
-                lblReasonError.Visible = true;
-                isValid = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtNotes.Text))
-            {
-                lblNotesError.Text = "Notes is required";
-                lblNotesError.Visible = true;
-                isValid = false;
-            }
-
-            return isValid;
-        }
-
-        private void HideErrors()
-        {
-            lblNurseIdError.Visible = false;
-            lblConsultationError.Visible = false;
-            lblReasonError.Visible = false;
-            lblNotesError.Visible = false;
-            lblMessage.Visible = false;
+            fields.Add("Patient Id", txtPatientId.Text);
+            fields.Add("Nurse Id", txtNurseId.Text);
+            fields.Add("Consultation Id", txtConsultationId.Text);
+            fields.Add("Reason", txtReason.Text);
+            fields.Add("Notes", txtNotes.Text);
+            return FormsValidator.ValidateForm(fields, lblError);
         }
 
         private void CenterFormPanel()

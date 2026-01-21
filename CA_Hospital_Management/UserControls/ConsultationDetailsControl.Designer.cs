@@ -20,7 +20,7 @@
         private Label lblNurseIdError;
         private Label lblConsultationError;
         private Label lblReasonError;
-        private Label lblNotesError;
+        private Label lblError;
 
         private Label lblPatientId;
         private Label lblLastName;
@@ -70,7 +70,7 @@
             lblReasonError = new Label();
             lblDob = new Label();
             lblAddress = new Label();
-            lblNotesError = new Label();
+            lblError = new Label();
             mainDgv = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)splitCont).BeginInit();
             splitCont.Panel1.SuspendLayout();
@@ -130,7 +130,7 @@
             panelForm.Controls.Add(lblReasonError);
             panelForm.Controls.Add(lblDob);
             panelForm.Controls.Add(lblAddress);
-            panelForm.Controls.Add(lblNotesError);
+            panelForm.Controls.Add(lblError);
             panelForm.Font = new Font("Segoe UI", 9F);
             panelForm.Location = new Point(17, 4);
             panelForm.Name = "panelForm";
@@ -425,13 +425,13 @@
             lblAddress.TabIndex = 12;
             lblAddress.Text = "Reason";
             // 
-            // lblNotesError
+            // lblError
             // 
-            lblNotesError.ForeColor = Color.Red;
-            lblNotesError.Location = new Point(416, 398);
-            lblNotesError.Name = "lblNotesError";
-            lblNotesError.Size = new Size(789, 23);
-            lblNotesError.TabIndex = 17;
+            lblError.ForeColor = Color.Red;
+            lblError.Location = new Point(416, 398);
+            lblError.Name = "lblError";
+            lblError.Size = new Size(789, 23);
+            lblError.TabIndex = 17;
             // 
             // mainDgv
             // 

@@ -74,7 +74,7 @@ namespace CA_Hospital_Management.UserControls
         {
             try
             {
-                if (!ValidateNurseForm())
+                if (!ValidateForm())
                     return;
 
                 var nurse = new Nurse
@@ -187,82 +187,25 @@ namespace CA_Hospital_Management.UserControls
             lblMessage.Text = "";
         }
 
-        private bool ValidateNurseForm()
+        private bool ValidateForm()
         {
-            bool isValid = true;
+            Dictionary<string, String> fields = new Dictionary<string, String>();
+            string countyValidator = cmbCounty.SelectedIndex == -1 ? "" : "County";
+            string contractValidator = cmbContract.SelectedIndex == -1 ? "" : "Contract";
+            string genderValidator = cmbGender.SelectedIndex == -1 ? "" : "Gender";
+            string hoursValidator = hoursWorked.Value <= 0 ? "" : "HoursWorked";
 
-            HideErrors();
-
-            if (string.IsNullOrWhiteSpace(txtFirstName.Text))
-            {
-                lblError.Text = "First name is required";
-                lblError.Visible = true;
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtLastName.Text))
-            {
-                lblError.Text = "Last name is required";
-                lblError.Visible = true;
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtPhone.Text))
-            {
-                lblError.Text = "Phone is required";
-                lblError.Visible = true;
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtEmail.Text))
-            {
-                lblError.Text = "Email is required";
-                lblError.Visible = true;
-                return false;
-            }
-            if (string.IsNullOrWhiteSpace(txtDepartment.Text))
-            {
-                lblError.Text = "Department is required";
-                lblError.Visible = true;
-                return false;
-            }
-
-            if (cmbContract.SelectedIndex == -1)
-            {
-                lblError.Text = "Contract is required";
-                lblError.Visible = true;
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtAddress.Text))
-            {
-                lblError.Text = "Address is required";
-                lblError.Visible = true;
-                return false;
-            }
-
-            if (cmbCounty.SelectedIndex == -1)
-            {
-                lblError.Text = "County is required";
-                lblError.Visible = true;
-                return false;
-            }
-
-            if (cmbGender.SelectedIndex == -1)
-            {
-                lblError.Text = "Gender is required";
-                lblError.Visible = true;
-                return false;
-            }
-
-            if (hoursWorked.Value <= 0)
-            {
-                lblError.Text = "Salary must be greater than zero";
-                lblError.Visible = true;
-                isValid = false;
-            }
-
-            return isValid;
+            fields.Add("First Name", txtFirstName.Text);
+            fields.Add("Last Name", txtLastName.Text);
+            fields.Add("Phone", txtPhone.Text);
+            fields.Add("Email", txtEmail.Text);
+            fields.Add("Department", txtDepartment.Text);
+            fields.Add("Address", txtAddress.Text);
+            fields.Add("County", countyValidator);
+            fields.Add("Contract", contractValidator);
+            fields.Add("Gender", genderValidator);
+            fields.Add("Hours Worked", hoursValidator);
+            return FormsValidator.ValidateForm(fields, lblError);
         }
 
         private void HideErrors()
