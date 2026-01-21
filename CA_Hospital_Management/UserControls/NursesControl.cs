@@ -1,14 +1,13 @@
-﻿using CA_Hospital_Management.Models.Entities;
+﻿using CA_Hospital_Management.Models.DTOs;
+using CA_Hospital_Management.Models.Entities;
 using CA_Hospital_Management.Repositories;
 using CA_Hospital_Management.Services;
-using HospitalManagement.Repositories;
 
 namespace CA_Hospital_Management.UserControls
 {
     public partial class NursesControl : UserControl
     {
         private NurseRepository _nurseRepo;
-        private HospitalRepository _hospitalRepo;
         private int? _selectedNurseId = null;
         private int _currentPage = 1;
         private const int PageSize = 10;
@@ -22,7 +21,6 @@ namespace CA_Hospital_Management.UserControls
         private void NursesControl_Load(object sender, EventArgs e)
         {
             _nurseRepo = new NurseRepository();
-            _hospitalRepo = new HospitalRepository();
 
             LoadNurses();
             ComboLoader.LoadCountyCombo(cmbCounty);
@@ -40,6 +38,11 @@ namespace CA_Hospital_Management.UserControls
                 _currentPage,
                 PageSize);
 
+            UpdateDataGrid(result);
+        }
+
+        private void UpdateDataGrid(ListPaginated<Nurse> result)
+        {
             mainDgv.DataSource = result.Items;
 
             _totalPages = result.TotalPages;
@@ -77,20 +80,7 @@ namespace CA_Hospital_Management.UserControls
                 if (!ValidateForm())
                     return;
 
-                var nurse = new Nurse
-                {
-                    FirstName = txtFirstName.Text,
-                    LastName = txtLastName.Text,
-                    Phone = txtPhone.Text,
-                    Email = txtEmail.Text,
-                    Address = txtAddress.Text,
-                    County = cmbCounty.Text,
-                    Gender = cmbGender.Text,
-                    ContractType = cmbContract.Text,
-                    Department = txtDepartment.Text,
-                    HoursWorked = int.Parse(hoursWorked.Value.ToString()),
-                    Dob = DateTime.Parse(dtpDoB.Text)
-                };
+                var nurse = BuildNurse(false);
                 _nurseRepo.CreateNurse(nurse);
                 ClearForm();
                 LoadNurses();
@@ -100,9 +90,7 @@ namespace CA_Hospital_Management.UserControls
             }
             catch (Exception ex)
             {
-                lblMessage.Text = $"Error: {ex.Message}";
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Visible = true;
+                ExceptionMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
         }
 
@@ -112,22 +100,7 @@ namespace CA_Hospital_Management.UserControls
             {
                 if (_selectedNurseId == null) return;
 
-                var nurse = new Nurse
-                {
-                    NurseId = _selectedNurseId.Value,
-                    FirstName = txtFirstName.Text,
-                    LastName = txtLastName.Text,
-                    Department = txtDepartment.Text,
-                    ContractType = cmbContract.Text,
-                    Phone = txtPhone.Text,
-                    Email = txtEmail.Text,
-                    Address = txtAddress.Text,
-                    County = cmbCounty.Text,
-                    Gender = cmbGender.Text,
-                    HoursWorked = int.Parse(hoursWorked.Value.ToString()),
-                    Dob = DateTime.Parse(dtpDoB.Text)
-                };
-
+                var nurse = BuildNurse();
                 _nurseRepo.UpdateNurse(nurse);
                 ClearForm();
                 LoadNurses();
@@ -138,10 +111,27 @@ namespace CA_Hospital_Management.UserControls
             }
             catch (Exception ex)
             {
-                lblMessage.Text = $"Error: {ex.Message}";
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Visible = true;
+                ExceptionMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
+        }
+
+        private Nurse BuildNurse(bool useId = true)
+        {
+            return new Nurse
+            {
+                NurseId = useId == true ? _selectedNurseId.Value : 0,
+                FirstName = txtFirstName.Text,
+                LastName = txtLastName.Text,
+                Department = txtDepartment.Text,
+                ContractType = cmbContract.Text,
+                Phone = txtPhone.Text,
+                Email = txtEmail.Text,
+                Address = txtAddress.Text,
+                County = cmbCounty.Text,
+                Gender = cmbGender.Text,
+                HoursWorked = int.Parse(hoursWorked.Value.ToString()),
+                Dob = DateTime.Parse(dtpDoB.Text)
+            };
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -160,9 +150,7 @@ namespace CA_Hospital_Management.UserControls
             }
             catch (Exception ex)
             {
-                lblMessage.Text = $"Error: {ex.Message}";
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Visible = true;
+                ExceptionMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
         }
 
@@ -208,12 +196,6 @@ namespace CA_Hospital_Management.UserControls
             return FormsValidator.ValidateForm(fields, lblError);
         }
 
-        private void HideErrors()
-        {
-            lblError.Visible = false;
-            lblMessage.Visible = false;
-        }
-
         private void CenterFormPanel()
         {
             if (panelForm == null) return;
@@ -257,13 +239,7 @@ namespace CA_Hospital_Management.UserControls
                 _currentPage,
                 PageSize);
 
-            mainDgv.DataSource = result.Items;
-
-            _totalPages = result.TotalPages;
-            lblPagination.Text = $"Page {_currentPage} of {_totalPages} ({result.TotalRecords} nurses)";
-
-            btnPrev.Enabled = _currentPage > 1;
-            btnNext.Enabled = _currentPage < _totalPages;
+            UpdateDataGrid(result);
         }
     }
 }

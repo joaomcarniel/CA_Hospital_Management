@@ -1,24 +1,13 @@
-﻿using CA_Hospital_Management.Models;
-using CA_Hospital_Management.Models.DTOs;
+﻿using CA_Hospital_Management.Models.DTOs;
 using CA_Hospital_Management.Models.Entities;
 using CA_Hospital_Management.Repositories;
 using CA_Hospital_Management.Services;
-using HospitalManagement.Repositories;
-using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 
 namespace CA_Hospital_Management.UserControls
 {
     public partial class ConsultationControl : UserControl
     {
         private ConsultationRepository _consultationRepo;
-        private HospitalRepository _hospitalRepo;
         private int? _selectedConsultationId = null;
         private int _currentPage = 1;
         private const int PageSize = 10;
@@ -32,7 +21,6 @@ namespace CA_Hospital_Management.UserControls
         private void ConsultationsControl_Load(object sender, EventArgs e)
         {
             _consultationRepo = new ConsultationRepository();
-            _hospitalRepo = new HospitalRepository();
 
             LoadConsultation();
 

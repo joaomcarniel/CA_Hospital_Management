@@ -1,14 +1,12 @@
 ﻿using CA_Hospital_Management.Models.Entities;
 using CA_Hospital_Management.Repositories;
 using CA_Hospital_Management.Services;
-using HospitalManagement.Repositories;
 
 namespace CA_Hospital_Management.UserControls
 {
     public partial class DoctorsControl : UserControl
     {
         private DoctorRepository _doctorRepo;
-        private HospitalRepository _hospitalRepo;
         private int? _selectedDoctorId = null;
         private int _currentPage = 1;
         private const int PageSize = 10;
@@ -22,7 +20,6 @@ namespace CA_Hospital_Management.UserControls
         private void DoctorsControl_Load(object sender, EventArgs e)
         {
             _doctorRepo = new DoctorRepository();
-            _hospitalRepo = new HospitalRepository();
 
             LoadDoctors();
             ComboLoader.LoadCountyCombo(cmbCounty);
