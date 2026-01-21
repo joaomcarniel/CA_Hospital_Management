@@ -5,6 +5,7 @@ using CA_Hospital_Management.Models.Entities;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
+using System.Numerics;
 
 namespace CA_Hospital_Management.Repositories
 {
@@ -20,7 +21,7 @@ namespace CA_Hospital_Management.Repositories
         public void CreateNurse(Nurse nurse)
         {
             context.Database.ExecuteSqlRaw(
-                "EXEC CreateNurse @FirstName, @LastName, @Address, @County, @Dob, @Phone, @Email, @Gender, @HoursWorked",
+                "EXEC CreateNurse @FirstName, @LastName, @Address, @County, @Dob, @Phone, @Email, @Gender, @HoursWorked, @Department, @ContractType",
                 new SqlParameter("@FirstName", nurse.FirstName),
                 new SqlParameter("@LastName", nurse.LastName),
                 new SqlParameter("@Address", nurse.Address),
@@ -29,7 +30,9 @@ namespace CA_Hospital_Management.Repositories
                 new SqlParameter("@Phone", nurse.Phone),
                 new SqlParameter("@Email", nurse.Email),
                 new SqlParameter("@Gender", nurse.Gender),
-                new SqlParameter("@HoursWorked", nurse.HoursWorked)
+                new SqlParameter("@HoursWorked", nurse.HoursWorked),
+                new SqlParameter("@Department", nurse.Department),
+                new SqlParameter("@ContractType", nurse.ContractType)
             );
         }
 
@@ -70,7 +73,9 @@ namespace CA_Hospital_Management.Repositories
                     County = reader.GetString(reader.GetOrdinal("County")),
                     Gender = reader.GetString(reader.GetOrdinal("Gender")),
                     HoursWorked = reader.GetInt32(reader.GetOrdinal("HoursWorked")),
-                    Dob = reader.GetDateTime(reader.GetOrdinal("Dob"))
+                    Dob = reader.GetDateTime(reader.GetOrdinal("Dob")),
+                    Department = reader.GetString(reader.GetOrdinal("Department")),
+                    ContractType = reader.GetString(reader.GetOrdinal("ContractType")),
                 });
             }
             if (reader.NextResult() && reader.Read())
@@ -111,7 +116,9 @@ namespace CA_Hospital_Management.Repositories
                     County = reader.GetString(reader.GetOrdinal("County")),
                     Gender = reader.GetString(reader.GetOrdinal("Gender")),
                     HoursWorked = reader.GetInt32(reader.GetOrdinal("HoursWorked")),
-                    Dob = reader.GetDateTime(reader.GetOrdinal("Dob"))
+                    Dob = reader.GetDateTime(reader.GetOrdinal("Dob")),
+                    Department = reader.GetString(reader.GetOrdinal("Department")),
+                    ContractType = reader.GetString(reader.GetOrdinal("ContractType"))
                 });
             }
             if (reader.NextResult() && reader.Read())
@@ -127,7 +134,7 @@ namespace CA_Hospital_Management.Repositories
         public void UpdateNurse(Nurse nurse)
         {
             context.Database.ExecuteSqlRaw(
-                "EXEC UpdateNurse @NurseId, @FirstName, @LastName, @Address, @County, @Dob, @Phone, @Email, @Gender, @HoursWorked",
+                "EXEC UpdateNurse @NurseId, @FirstName, @LastName, @Address, @County, @Dob, @Phone, @Email, @Gender, @HoursWorked, @Department, @ContractType",
                 new SqlParameter("@NurseId", nurse.NurseId),
                 new SqlParameter("@FirstName", nurse.FirstName),
                 new SqlParameter("@LastName", nurse.LastName),
@@ -137,7 +144,9 @@ namespace CA_Hospital_Management.Repositories
                 new SqlParameter("@Phone", nurse.Phone),
                 new SqlParameter("@Email", nurse.Email),
                 new SqlParameter("@Gender", nurse.Gender),
-                new SqlParameter("@HoursWorked", nurse.HoursWorked)
+                new SqlParameter("@HoursWorked", nurse.HoursWorked),
+                new SqlParameter("@Department", nurse.Department),
+                new SqlParameter("@ContractType", nurse.ContractType)
             );
         }
     }

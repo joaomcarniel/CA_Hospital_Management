@@ -108,7 +108,6 @@
             // 
             splitDoctors.Panel1.AutoScroll = true;
             splitDoctors.Panel1.Controls.Add(panelForm);
-            splitDoctors.Panel1.Paint += splitDoctors_Panel1_Paint;
             splitDoctors.Panel1.Resize += splitDoctors_Panel1_Resize;
             // 
             // splitDoctors.Panel2
@@ -162,7 +161,7 @@
             // 
             // label4
             // 
-            label4.Location = new Point(778, 175);
+            label4.Location = new Point(778, 183);
             label4.Name = "label4";
             label4.Size = new Size(100, 23);
             label4.TabIndex = 41;
@@ -173,22 +172,22 @@
             // 
             cmbContract.BackColor = Color.FromArgb(255, 224, 192);
             cmbContract.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbContract.Location = new Point(878, 172);
+            cmbContract.Location = new Point(878, 180);
             cmbContract.Name = "cmbContract";
             cmbContract.Size = new Size(179, 28);
-            cmbContract.TabIndex = 42;
+            cmbContract.TabIndex = 6;
             // 
             // txtDepartment
             // 
             txtDepartment.BackColor = Color.FromArgb(255, 224, 192);
-            txtDepartment.Location = new Point(416, 175);
+            txtDepartment.Location = new Point(416, 181);
             txtDepartment.Name = "txtDepartment";
             txtDepartment.Size = new Size(327, 27);
-            txtDepartment.TabIndex = 40;
+            txtDepartment.TabIndex = 5;
             // 
             // label3
             // 
-            label3.Location = new Point(325, 175);
+            label3.Location = new Point(325, 183);
             label3.Name = "label3";
             label3.Size = new Size(89, 23);
             label3.TabIndex = 39;
@@ -214,7 +213,7 @@
             lblPagination.ForeColor = Color.Black;
             lblPagination.Location = new Point(637, 552);
             lblPagination.Name = "lblPagination";
-            lblPagination.Size = new Size(256, 23);
+            lblPagination.Size = new Size(255, 23);
             lblPagination.TabIndex = 37;
             lblPagination.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -223,7 +222,7 @@
             btnNext.BackColor = SystemColors.MenuHighlight;
             btnNext.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnNext.ForeColor = Color.White;
-            btnNext.Location = new Point(899, 543);
+            btnNext.Location = new Point(963, 543);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(92, 40);
             btnNext.TabIndex = 36;
@@ -237,7 +236,7 @@
             btnPrev.FlatAppearance.BorderSize = 4;
             btnPrev.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPrev.ForeColor = Color.White;
-            btnPrev.Location = new Point(539, 543);
+            btnPrev.Location = new Point(474, 543);
             btnPrev.Name = "btnPrev";
             btnPrev.Size = new Size(92, 40);
             btnPrev.TabIndex = 35;
@@ -247,12 +246,11 @@
             // 
             // label1
             // 
-            label1.Location = new Point(474, 457);
+            label1.Location = new Point(474, 458);
             label1.Name = "label1";
             label1.Size = new Size(122, 23);
             label1.TabIndex = 34;
             label1.Text = "Search By Name";
-            label1.Click += label1_Click;
             // 
             // txtSearchDoctor
             // 
@@ -267,7 +265,7 @@
             btnGetDoctor.BackColor = SystemColors.MenuHighlight;
             btnGetDoctor.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnGetDoctor.ForeColor = Color.White;
-            btnGetDoctor.Location = new Point(935, 446);
+            btnGetDoctor.Location = new Point(932, 446);
             btnGetDoctor.Name = "btnGetDoctor";
             btnGetDoctor.Size = new Size(123, 42);
             btnGetDoctor.TabIndex = 32;
@@ -277,7 +275,7 @@
             // 
             // lblFirstName
             // 
-            lblFirstName.Location = new Point(314, 97);
+            lblFirstName.Location = new Point(314, 98);
             lblFirstName.Name = "lblFirstName";
             lblFirstName.Size = new Size(100, 23);
             lblFirstName.TabIndex = 0;
@@ -289,7 +287,7 @@
             btnCreateDoctor.BackColor = SystemColors.MenuHighlight;
             btnCreateDoctor.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCreateDoctor.ForeColor = Color.White;
-            btnCreateDoctor.Location = new Point(539, 394);
+            btnCreateDoctor.Location = new Point(474, 396);
             btnCreateDoctor.Name = "btnCreateDoctor";
             btnCreateDoctor.Size = new Size(92, 40);
             btnCreateDoctor.TabIndex = 26;
@@ -308,13 +306,12 @@
             // lblDocMessage
             // 
             lblDocMessage.ForeColor = Color.Red;
-            lblDocMessage.Location = new Point(474, 507);
+            lblDocMessage.Location = new Point(474, 505);
             lblDocMessage.Name = "lblDocMessage";
             lblDocMessage.Size = new Size(581, 23);
             lblDocMessage.TabIndex = 31;
             lblDocMessage.TextAlign = ContentAlignment.MiddleCenter;
             lblDocMessage.Visible = false;
-            lblDocMessage.Click += lblDocMessage_Click;
             // 
             // lblLastName
             // 
@@ -331,14 +328,14 @@
             txtLastName.Location = new Point(878, 95);
             txtLastName.Name = "txtLastName";
             txtLastName.Size = new Size(327, 27);
-            txtLastName.TabIndex = 4;
+            txtLastName.TabIndex = 2;
             // 
             // btnClear
             // 
             btnClear.BackColor = SystemColors.MenuHighlight;
             btnClear.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClear.ForeColor = Color.White;
-            btnClear.Location = new Point(899, 394);
+            btnClear.Location = new Point(963, 395);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(92, 42);
             btnClear.TabIndex = 29;
@@ -351,7 +348,7 @@
             btnDelete.BackColor = Color.Red;
             btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(779, 394);
+            btnDelete.Location = new Point(800, 396);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(92, 40);
             btnDelete.TabIndex = 28;
@@ -361,7 +358,7 @@
             // 
             // lblPhone
             // 
-            lblPhone.Location = new Point(314, 136);
+            lblPhone.Location = new Point(314, 141);
             lblPhone.Name = "lblPhone";
             lblPhone.Size = new Size(100, 23);
             lblPhone.TabIndex = 6;
@@ -373,7 +370,7 @@
             btnUpdateDoctor.BackColor = Color.Lime;
             btnUpdateDoctor.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnUpdateDoctor.ForeColor = Color.White;
-            btnUpdateDoctor.Location = new Point(659, 394);
+            btnUpdateDoctor.Location = new Point(637, 396);
             btnUpdateDoctor.Name = "btnUpdateDoctor";
             btnUpdateDoctor.Size = new Size(92, 40);
             btnUpdateDoctor.TabIndex = 27;
@@ -384,10 +381,10 @@
             // txtPhone
             // 
             txtPhone.BackColor = Color.FromArgb(255, 224, 192);
-            txtPhone.Location = new Point(416, 133);
+            txtPhone.Location = new Point(416, 139);
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(327, 27);
-            txtPhone.TabIndex = 7;
+            txtPhone.TabIndex = 3;
             // 
             // dtpDoB
             // 
@@ -395,7 +392,7 @@
             dtpDoB.Location = new Point(878, 315);
             dtpDoB.Name = "dtpDoB";
             dtpDoB.Size = new Size(327, 27);
-            dtpDoB.TabIndex = 25;
+            dtpDoB.TabIndex = 11;
             // 
             // lblDob
             // 
@@ -408,7 +405,7 @@
             // 
             // lblEmail
             // 
-            lblEmail.Location = new Point(778, 136);
+            lblEmail.Location = new Point(778, 142);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(100, 23);
             lblEmail.TabIndex = 9;
@@ -422,27 +419,26 @@
             lblError.Name = "lblError";
             lblError.Size = new Size(880, 23);
             lblError.TabIndex = 23;
-            lblError.Click += lblDocSalaryError_Click;
             // 
             // txtEmail
             // 
             txtEmail.BackColor = Color.FromArgb(255, 224, 192);
-            txtEmail.Location = new Point(878, 133);
+            txtEmail.Location = new Point(878, 139);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(327, 27);
-            txtEmail.TabIndex = 10;
+            txtEmail.TabIndex = 4;
             // 
             // numSalary
             // 
             numSalary.BackColor = Color.FromArgb(255, 224, 192);
-            numSalary.Location = new Point(416, 315);
+            numSalary.Location = new Point(416, 311);
             numSalary.Name = "numSalary";
             numSalary.Size = new Size(179, 27);
-            numSalary.TabIndex = 22;
+            numSalary.TabIndex = 10;
             // 
             // lblSalary
             // 
-            lblSalary.Location = new Point(314, 318);
+            lblSalary.Location = new Point(314, 315);
             lblSalary.Name = "lblSalary";
             lblSalary.Size = new Size(100, 23);
             lblSalary.TabIndex = 21;
@@ -451,7 +447,7 @@
             // 
             // lblAddress
             // 
-            lblAddress.Location = new Point(314, 225);
+            lblAddress.Location = new Point(314, 226);
             lblAddress.Name = "lblAddress";
             lblAddress.Size = new Size(100, 23);
             lblAddress.TabIndex = 12;
@@ -461,10 +457,10 @@
             // txtAddress
             // 
             txtAddress.BackColor = Color.FromArgb(255, 224, 192);
-            txtAddress.Location = new Point(416, 222);
+            txtAddress.Location = new Point(416, 224);
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(789, 27);
-            txtAddress.TabIndex = 13;
+            txtAddress.TabIndex = 7;
             // 
             // cmbGender
             // 
@@ -473,7 +469,7 @@
             cmbGender.Location = new Point(878, 266);
             cmbGender.Name = "cmbGender";
             cmbGender.Size = new Size(179, 28);
-            cmbGender.TabIndex = 19;
+            cmbGender.TabIndex = 9;
             // 
             // lblGender
             // 
@@ -497,10 +493,10 @@
             // 
             cmbCounty.BackColor = Color.FromArgb(255, 224, 192);
             cmbCounty.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbCounty.Location = new Point(416, 266);
+            cmbCounty.Location = new Point(416, 267);
             cmbCounty.Name = "cmbCounty";
             cmbCounty.Size = new Size(179, 28);
-            cmbCounty.TabIndex = 16;
+            cmbCounty.TabIndex = 8;
             // 
             // dgvDoctors
             // 
@@ -547,5 +543,6 @@
         private ComboBox cmbContract;
         private TextBox txtDepartment;
         private Label label3;
+        private Label label5;
     }
 }

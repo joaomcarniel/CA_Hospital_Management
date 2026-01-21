@@ -306,29 +306,9 @@ namespace CA_Hospital_Management.UserControls
             LoadDoctors();
         }
 
-        private void splitDoctors_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblDocMessage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblDocSalaryError_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void splitDoctors_Panel1_Resize(object sender, EventArgs e)
         {
             CenterFormPanel();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnGetDoctor_Click(object sender, EventArgs e)
