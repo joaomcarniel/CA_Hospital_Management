@@ -1,14 +1,13 @@
-﻿using CA_Hospital_Management.Models.Entities;
+﻿using CA_Hospital_Management.Models.DTOs;
+using CA_Hospital_Management.Models.Entities;
 using CA_Hospital_Management.Repositories;
 using CA_Hospital_Management.Services;
-using HospitalManagement.Repositories;
 
 namespace CA_Hospital_Management.UserControls
 {
     public partial class PatientsControl : UserControl
     {
         private PatientRepository _patientRepo;
-        private HospitalRepository _hospitalRepo;
         private int? _selectedPatientId = null;
         private int _currentPage = 1;
         private const int PageSize = 10;
@@ -22,7 +21,6 @@ namespace CA_Hospital_Management.UserControls
         private void PatientsControl_Load(object sender, EventArgs e)
         {
             _patientRepo = new PatientRepository();
-            _hospitalRepo = new HospitalRepository();
 
             LoadPatients();
             ComboLoader.LoadCountyCombo(cmbCounty);
@@ -39,6 +37,11 @@ namespace CA_Hospital_Management.UserControls
                 _currentPage,
                 PageSize);
 
+            UpdateDataGrid(result);
+        }
+
+        private void UpdateDataGrid(ListPaginated<Patient> result)
+        {
             mainDgv.DataSource = result.Items;
 
             _totalPages = result.TotalPages;
@@ -253,14 +256,7 @@ namespace CA_Hospital_Management.UserControls
             var result = _patientRepo.SearchPatientsAbove25Paged(
                 _currentPage,
                 PageSize);
-
-            mainDgv.DataSource = result.Items;
-
-            _totalPages = result.TotalPages;
-            lblPagination.Text = $"Page {_currentPage} of {_totalPages} ({result.TotalRecords} Patients)";
-
-            btnPrev.Enabled = _currentPage > 1;
-            btnNext.Enabled = _currentPage < _totalPages;
+            UpdateDataGrid(result);
         }
     }
 }

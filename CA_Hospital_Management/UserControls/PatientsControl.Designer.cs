@@ -1,4 +1,6 @@
-﻿namespace CA_Hospital_Management.UserControls
+﻿using CA_Hospital_Management.Services;
+
+namespace CA_Hospital_Management.UserControls
 {
     partial class PatientsControl
     {
