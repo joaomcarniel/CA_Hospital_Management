@@ -77,30 +77,15 @@ namespace CA_Hospital_Management.UserControls
                 if (!ValidateForm())
                     return;
 
-                var patient = new Patient
-                {
-                    FirstName = txtFirstName.Text,
-                    LastName = txtLastName.Text,
-                    Phone = txtPhone.Text,
-                    Email = txtEmail.Text,
-                    Address = txtAddress.Text,
-                    County = cmbCounty.Text,
-                    Gender = cmbGender.Text,
-                    PatientNumber = int.Parse(txtPatientNumber.Text.ToString()),
-                    Dob = DateTime.Parse(dtpDoB.Text)
-                };
+                var patient = BuildPatient(false);
                 _patientRepo.CreatePatient(patient);
                 ClearForm();
                 LoadPatients();
-                lblMessage.Text = $"Patient {patient.FirstName} {patient.LastName} created successfully.";
-                lblMessage.ForeColor = Color.Green;
-                lblMessage.Visible = true;
+                FrontMessager.BuildSuccessMessage(lblMessage, "Patient", "Created");
             }
             catch (Exception ex)
             {
-                lblMessage.Text = $"Error: {ex.Message}";
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Visible = true;
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
         }
 
@@ -110,34 +95,35 @@ namespace CA_Hospital_Management.UserControls
             {
                 if (_selectedPatientId == null) return;
 
-                var patient = new Patient
-                {
-                    PatientId = _selectedPatientId.Value,
-                    FirstName = txtFirstName.Text,
-                    LastName = txtLastName.Text,
-                    Phone = txtPhone.Text,
-                    Email = txtEmail.Text,
-                    Address = txtAddress.Text,
-                    County = cmbCounty.Text,
-                    Gender = cmbGender.Text,
-                    PatientNumber = int.Parse(txtPatientNumber.Text.ToString()),
-                    Dob = DateTime.Parse(dtpDoB.Text)
-                };
+                var patient = BuildPatient();
 
                 _patientRepo.UpdatePatient(patient);
                 ClearForm();
                 LoadPatients();
-                lblMessage.Text = $"Patient {patient.FirstName} {patient.LastName} Updated successfully.";
-                lblMessage.ForeColor = Color.Green;
-                lblMessage.Visible = true;
+                FrontMessager.BuildSuccessMessage(lblMessage, "Patient", "Updated");
 
             }
             catch (Exception ex)
             {
-                lblMessage.Text = $"Error: {ex.Message}";
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Visible = true;
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
+        }
+
+        private Patient BuildPatient(bool useId = true)
+        {
+            return new Patient
+            {
+                PatientId = useId ? _selectedPatientId.Value : 0,
+                FirstName = txtFirstName.Text,
+                LastName = txtLastName.Text,
+                Phone = txtPhone.Text,
+                Email = txtEmail.Text,
+                Address = txtAddress.Text,
+                County = cmbCounty.Text,
+                Gender = cmbGender.Text,
+                PatientNumber = int.Parse(txtPatientNumber.Text.ToString()),
+                Dob = DateTime.Parse(dtpDoB.Text)
+            };
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -150,15 +136,11 @@ namespace CA_Hospital_Management.UserControls
 
                 ClearForm();
                 LoadPatients();
-                lblMessage.Text = $"Patient {_selectedPatientId} Deleted successfully.";
-                lblMessage.ForeColor = Color.Green;
-                lblMessage.Visible = true;
+                FrontMessager.BuildSuccessMessage(lblMessage, "Patient", "Deleted");
             }
             catch (Exception ex)
             {
-                lblMessage.Text = $"Error: {ex.Message}";
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Visible = true;
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
         }
 

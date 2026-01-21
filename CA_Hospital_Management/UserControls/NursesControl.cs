@@ -84,13 +84,11 @@ namespace CA_Hospital_Management.UserControls
                 _nurseRepo.CreateNurse(nurse);
                 ClearForm();
                 LoadNurses();
-                lblMessage.Text = $"Nurse {nurse.FirstName} {nurse.LastName} created successfully.";
-                lblMessage.ForeColor = Color.Green;
-                lblMessage.Visible = true;
+                FrontMessager.BuildSuccessMessage(lblMessage, "Nurse", "Created");
             }
             catch (Exception ex)
             {
-                ExceptionMessager.BuildExceptionMessage(lblMessage, ex.Message);
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
         }
 
@@ -104,14 +102,12 @@ namespace CA_Hospital_Management.UserControls
                 _nurseRepo.UpdateNurse(nurse);
                 ClearForm();
                 LoadNurses();
-                lblMessage.Text = $"Nurse {nurse.FirstName} {nurse.LastName} Updated successfully.";
-                lblMessage.ForeColor = Color.Green;
-                lblMessage.Visible = true;
+                FrontMessager.BuildSuccessMessage(lblMessage, "Nurse", "Updated");
 
             }
             catch (Exception ex)
             {
-                ExceptionMessager.BuildExceptionMessage(lblMessage, ex.Message);
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
         }
 
@@ -144,13 +140,11 @@ namespace CA_Hospital_Management.UserControls
 
                 ClearForm();
                 LoadNurses();
-                lblMessage.Text = $"Nurse {_selectedNurseId} Deleted successfully.";
-                lblMessage.ForeColor = Color.Green;
-                lblMessage.Visible = true;
+                FrontMessager.BuildSuccessMessage(lblMessage, "Nurse", "Deleted");
             }
             catch (Exception ex)
             {
-                ExceptionMessager.BuildExceptionMessage(lblMessage, ex.Message);
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
         }
 
