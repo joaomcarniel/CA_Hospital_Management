@@ -154,7 +154,6 @@
             label4.Size = new Size(100, 23);
             label4.TabIndex = 46;
             label4.Text = "Diagnosis";
-            label4.Click += label4_Click;
             // 
             // txtNotes
             // 

@@ -67,27 +67,15 @@ namespace CA_Hospital_Management.UserControls
                 if (!ValidateForm())
                     return;
 
-                var consultation = new Consultation
-                {
-                    ConsultationPatientId = int.Parse(txtPatient.Text),
-                    ConsultationDoctorId = int.Parse(txtDoctor.Text),
-                    ConsultationReason = txtReason.Text,
-                    ConsultationDiagnosis = txtDiagnosis.Text,
-                    ConsultationNotes = txtNotes.Text,
-                    ConsultationDate = DateTime.Parse(dtpConsultationDate.Text)
-                };
+                var consultation = BuildConsultation(false);
                 _consultationRepo.CreateConsultation(consultation);
                 ClearForm();
                 LoadConsultation();
-                lblMessage.Text = $"Consultation created successfully.";
-                lblMessage.ForeColor = Color.Green;
-                lblMessage.Visible = true;
+                FrontMessager.BuildSuccessMessage(lblMessage, "Consultation", "Created");
             }
             catch (Exception ex)
             {
-                lblMessage.Text = $"Error: {ex.Message}";
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Visible = true;
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
         }
 
@@ -97,31 +85,32 @@ namespace CA_Hospital_Management.UserControls
             {
                 if (_selectedConsultationId == null) return;
 
-                var consultation = new Consultation
-                {
-                    ConsultationId = _selectedConsultationId.Value,
-                    ConsultationPatientId = int.Parse(txtPatient.Text),
-                    ConsultationDoctorId = int.Parse(txtDoctor.Text),
-                    ConsultationReason = txtReason.Text,
-                    ConsultationDiagnosis = txtDiagnosis.Text,
-                    ConsultationNotes = txtNotes.Text,
-                    ConsultationDate = DateTime.Parse(dtpConsultationDate.Text)
-                };
+                var consultation = BuildConsultation();
 
                 _consultationRepo.UpdateConsultation(consultation);
                 ClearForm();
                 LoadConsultation();
-                lblMessage.Text = $"Consultation Updated successfully.";
-                lblMessage.ForeColor = Color.Green;
-                lblMessage.Visible = true;
+                FrontMessager.BuildSuccessMessage(lblMessage, "Consultation", "Updated");
 
             }
             catch (Exception ex)
             {
-                lblMessage.Text = $"Error: {ex.Message}";
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Visible = true;
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
+        }
+
+        private Consultation BuildConsultation(bool useId = true)
+        {
+            return new Consultation
+            {
+                ConsultationId = useId ? _selectedConsultationId.Value : 0,
+                ConsultationPatientId = int.Parse(txtPatient.Text),
+                ConsultationDoctorId = int.Parse(txtDoctor.Text),
+                ConsultationReason = txtReason.Text,
+                ConsultationDiagnosis = txtDiagnosis.Text,
+                ConsultationNotes = txtNotes.Text,
+                ConsultationDate = DateTime.Parse(dtpConsultationDate.Text)
+            };
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -134,15 +123,11 @@ namespace CA_Hospital_Management.UserControls
 
                 ClearForm();
                 LoadConsultation();
-                lblMessage.Text = $"Consultation {_selectedConsultationId} Deleted successfully.";
-                lblMessage.ForeColor = Color.Green;
-                lblMessage.Visible = true;
+                FrontMessager.BuildSuccessMessage(lblMessage, "Consultation", "Deleted");
             }
             catch (Exception ex)
             {
-                lblMessage.Text = $"Error: {ex.Message}";
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Visible = true;
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
         }
 

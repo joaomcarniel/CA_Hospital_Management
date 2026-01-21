@@ -25,7 +25,7 @@
         private Button btnDelete;
         private Button btnClear;
 
-        private Label lblDocMessage;
+        private Label lblMessage;
         private Label lblError;
 
         private Label lblFirstName;
@@ -66,7 +66,7 @@
             lblFirstName = new Label();
             btnCreateDoctor = new Button();
             txtFirstName = new TextBox();
-            lblDocMessage = new Label();
+            lblMessage = new Label();
             lblLastName = new Label();
             txtLastName = new TextBox();
             btnClear = new Button();
@@ -133,7 +133,7 @@
             panelForm.Controls.Add(lblFirstName);
             panelForm.Controls.Add(btnCreateDoctor);
             panelForm.Controls.Add(txtFirstName);
-            panelForm.Controls.Add(lblDocMessage);
+            panelForm.Controls.Add(lblMessage);
             panelForm.Controls.Add(lblLastName);
             panelForm.Controls.Add(txtLastName);
             panelForm.Controls.Add(btnClear);
@@ -305,13 +305,13 @@
             // 
             // lblDocMessage
             // 
-            lblDocMessage.ForeColor = Color.Red;
-            lblDocMessage.Location = new Point(474, 505);
-            lblDocMessage.Name = "lblDocMessage";
-            lblDocMessage.Size = new Size(581, 23);
-            lblDocMessage.TabIndex = 31;
-            lblDocMessage.TextAlign = ContentAlignment.MiddleCenter;
-            lblDocMessage.Visible = false;
+            lblMessage.ForeColor = Color.Red;
+            lblMessage.Location = new Point(474, 505);
+            lblMessage.Name = "lblDocMessage";
+            lblMessage.Size = new Size(581, 23);
+            lblMessage.TabIndex = 31;
+            lblMessage.TextAlign = ContentAlignment.MiddleCenter;
+            lblMessage.Visible = false;
             // 
             // lblLastName
             // 

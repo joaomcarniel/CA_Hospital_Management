@@ -35,6 +35,11 @@ namespace CA_Hospital_Management.UserControls
                 _currentPage,
                 PageSize);
 
+            UpdateDataGrid(result);
+        }
+
+        private void UpdateDataGrid(ListPaginated<ConsultationDetailsDto> result)
+        {
             mainDgv.DataSource = result.Items;
 
             _totalPages = result.TotalPages;
@@ -67,27 +72,15 @@ namespace CA_Hospital_Management.UserControls
                 if (!ValidateForm())
                     return;
 
-                var consultation = new ConsultationDetails
-                {
-                    PatientId = int.Parse(txtPatientId.Text),
-                    NurseId = int.Parse(txtNurseId.Text),
-                    ConsultationId = int.Parse(txtConsultationId.Text),
-                    Reason = txtReason.Text,
-                    Notes = txtNotes.Text,
-                    ConsultationDate = dtpConsultationDate.Value
-                };
+                var consultation = BuildDetails(false);
                 _consultationRepo.CreateConsultationDetails(consultation);
                 ClearForm();
                 LoadConsultation();
-                lblMessage.Text = $"Consultation details created successfully.";
-                lblMessage.ForeColor = Color.Green;
-                lblMessage.Visible = true;
+                FrontMessager.BuildSuccessMessage(lblMessage, "Details", "Created");
             }
             catch (Exception ex)
             {
-                lblMessage.Text = $"Error: {ex.Message}";
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Visible = true;
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
         }
 
@@ -97,31 +90,32 @@ namespace CA_Hospital_Management.UserControls
             {
                 if (_selectedConsultationId == null) return;
 
-                var consultation = new ConsultationDetails
-                {
-                    ConsultDetailsId = _selectedConsultationId.Value,
-                    PatientId = int.Parse(txtPatientId.Text),
-                    ConsultationId = int.Parse(txtConsultationId.Text),
-                    NurseId = int.Parse(txtNurseId.Text),
-                    Reason = txtReason.Text,
-                    Notes = txtNotes.Text,
-                    ConsultationDate = DateTime.Parse(dtpConsultationDate.Text)
-                };
+                var consultation = BuildDetails();
 
                 _consultationRepo.UpdateConsultation(consultation);
                 ClearForm();
                 LoadConsultation();
-                lblMessage.Text = $"Consultation Updated successfully.";
-                lblMessage.ForeColor = Color.Green;
-                lblMessage.Visible = true;
+                FrontMessager.BuildSuccessMessage(lblMessage, "Details", "Updated");
 
             }
             catch (Exception ex)
             {
-                lblMessage.Text = $"Error: {ex.Message}";
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Visible = true;
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
+        }
+
+        private ConsultationDetails BuildDetails(bool useId = true)
+        {
+            return new ConsultationDetails
+            {
+                ConsultDetailsId = useId ? _selectedConsultationId.Value : 0,
+                PatientId = int.Parse(txtPatientId.Text),
+                ConsultationId = int.Parse(txtConsultationId.Text),
+                NurseId = int.Parse(txtNurseId.Text),
+                Reason = txtReason.Text,
+                Notes = txtNotes.Text,
+                ConsultationDate = DateTime.Parse(dtpConsultationDate.Text)
+            };
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -134,15 +128,11 @@ namespace CA_Hospital_Management.UserControls
 
                 ClearForm();
                 LoadConsultation();
-                lblMessage.Text = $"Consultation {_selectedConsultationId} Deleted successfully.";
-                lblMessage.ForeColor = Color.Green;
-                lblMessage.Visible = true;
+                FrontMessager.BuildSuccessMessage(lblMessage, "Details", "Deleted");
             }
             catch (Exception ex)
             {
-                lblMessage.Text = $"Error: {ex.Message}";
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Visible = true;
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
         }
 
@@ -226,11 +216,6 @@ namespace CA_Hospital_Management.UserControls
             {
                 e.Handled = true;
             }
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using CA_Hospital_Management.Models.Entities;
+﻿using CA_Hospital_Management.Models.DTOs;
+using CA_Hospital_Management.Models.Entities;
 using CA_Hospital_Management.Repositories;
 using CA_Hospital_Management.Services;
 
@@ -37,6 +38,11 @@ namespace CA_Hospital_Management.UserControls
                 _currentPage,
                 PageSize);
 
+            UpdateDataGrid(result);
+        }
+
+        private void UpdateDataGrid(ListPaginated<Doctor> result)
+        {
             dgvDoctors.DataSource = result.Items;
 
             _totalPages = result.TotalPages;
@@ -74,32 +80,15 @@ namespace CA_Hospital_Management.UserControls
                 if (!ValidateForm())
                     return;
 
-                var doctor = new Doctor
-                {
-                    FirstName = txtFirstName.Text,
-                    LastName = txtLastName.Text,
-                    Phone = txtPhone.Text,
-                    Email = txtEmail.Text,
-                    Address = txtAddress.Text,
-                    County = cmbCounty.Text,
-                    Gender = cmbGender.Text,
-                    Pay = numSalary.Value,
-                    Department = txtDepartment.Text,
-                    ContractType = cmbContract.Text,
-                    Dob = DateTime.Parse(dtpDoB.Text)
-                };
+                var doctor = BuildDoctor(false);
                 _doctorRepo.CreateDoctor(doctor);
                 ClearForm();
                 LoadDoctors();
-                lblDocMessage.Text = $"Doctor {doctor.FirstName} {doctor.LastName} created successfully.";
-                lblDocMessage.ForeColor = Color.Green;
-                lblDocMessage.Visible = true;
+                FrontMessager.BuildSuccessMessage(lblMessage, "Doctor", "Created");
             }
             catch (Exception ex)
             {
-                lblDocMessage.Text = $"Error: {ex.Message}";
-                lblDocMessage.ForeColor = Color.Red;
-                lblDocMessage.Visible = true;
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
         }
 
@@ -109,36 +98,37 @@ namespace CA_Hospital_Management.UserControls
             {
                 if (_selectedDoctorId == null) return;
 
-                var doctor = new Doctor
-                {
-                    DoctorId = _selectedDoctorId.Value,
-                    FirstName = txtFirstName.Text,
-                    LastName = txtLastName.Text,
-                    Department = txtDepartment.Text,
-                    ContractType = cmbContract.Text,
-                    Phone = txtPhone.Text,
-                    Email = txtEmail.Text,
-                    Address = txtAddress.Text,
-                    County = cmbCounty.Text,
-                    Gender = cmbGender.Text,
-                    Pay = numSalary.Value,
-                    Dob = DateTime.Parse(dtpDoB.Text)
-                };
+                var doctor = BuildDoctor();
 
                 _doctorRepo.UpdateDoctor(doctor);
                 ClearForm();
                 LoadDoctors();
-                lblDocMessage.Text = $"Doctor {doctor.FirstName} {doctor.LastName} Updated successfully.";
-                lblDocMessage.ForeColor = Color.Green;
-                lblDocMessage.Visible = true;
+                FrontMessager.BuildSuccessMessage(lblMessage, "Doctor", "Updated");
 
             }
             catch (Exception ex)
             {
-                lblDocMessage.Text = $"Error: {ex.Message}";
-                lblDocMessage.ForeColor = Color.Red;
-                lblDocMessage.Visible = true;
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
+        }
+
+        private Doctor BuildDoctor(bool useId = true)
+        {
+            return new Doctor
+            {
+                DoctorId = useId ? _selectedDoctorId.Value : 0,
+                FirstName = txtFirstName.Text,
+                LastName = txtLastName.Text,
+                Department = txtDepartment.Text,
+                ContractType = cmbContract.Text,
+                Phone = txtPhone.Text,
+                Email = txtEmail.Text,
+                Address = txtAddress.Text,
+                County = cmbCounty.Text,
+                Gender = cmbGender.Text,
+                Pay = numSalary.Value,
+                Dob = DateTime.Parse(dtpDoB.Text)
+            };
         }
 
         private void btnDeleteDoctor_Click(object sender, EventArgs e)
@@ -151,15 +141,11 @@ namespace CA_Hospital_Management.UserControls
 
                 ClearForm();
                 LoadDoctors();
-                lblDocMessage.Text = $"Doctor {_selectedDoctorId} Deleted successfully.";
-                lblDocMessage.ForeColor = Color.Green;
-                lblDocMessage.Visible = true;
+                FrontMessager.BuildSuccessMessage(lblMessage, "Doctor", "Deleted");
             }
             catch (Exception ex)
             {
-                lblDocMessage.Text = $"Error: {ex.Message}";
-                lblDocMessage.ForeColor = Color.Red;
-                lblDocMessage.Visible = true;
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
         }
 
@@ -183,7 +169,7 @@ namespace CA_Hospital_Management.UserControls
             _selectedDoctorId = null;
             lblError.Text = "";
             lblError.Text = "";
-            lblDocMessage.Text = "";
+            lblMessage.Text = "";
         }
 
         private bool ValidateForm()
@@ -205,12 +191,6 @@ namespace CA_Hospital_Management.UserControls
             fields.Add("Gender", genderValidator);
             fields.Add("Salary", salaryValidator);
             return FormsValidator.ValidateForm(fields, lblError);
-        }
-
-        private void HideDoctorErrors()
-        {
-            lblError.Visible = false;
-            lblDocMessage.Visible = false;
         }
 
         private void CenterFormPanel()

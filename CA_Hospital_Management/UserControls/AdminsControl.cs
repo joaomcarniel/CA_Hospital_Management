@@ -48,25 +48,15 @@ namespace CA_Hospital_Management.UserControls
                 if (!ValidateForm())
                     return;
 
-                var login = new Login
-                {
-                    LoginUserName = txtUsername.Text,
-                    LoginPassword = PasswordHasher.HashPassword(txtPassword.Text),
-                    LoginIsActive = cmbActive.Text.Equals("sim") ? 1 : 0,
-                    LoginRole = cmbRole.Text,
-                };
+                var login = BuildLogin(false);
                 _adminRepo.CreateLogin(login);
                 ClearForm();
                 LoadAdmins();
-                lblMessage.Text = $"Login created successfully.";
-                lblMessage.ForeColor = Color.Green;
-                lblMessage.Visible = true;
+                FrontMessager.BuildSuccessMessage(lblMessage, "Login", "Created");
             }
             catch (Exception ex)
             {
-                lblMessage.Text = $"Error: {ex.Message}";
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Visible = true;
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
         }
 
@@ -97,28 +87,30 @@ namespace CA_Hospital_Management.UserControls
             {
                 if (_selectedAdminId == null) return;
 
-                var consultation = new Login
-                {
-                    LoginId = _selectedAdminId.Value,
-                    LoginUserName = txtUsername.Text,
-                    LoginIsActive = cmbActive.Text.Equals("sim") ? 1 : 0,
-                    LoginRole = cmbRole.Text
-                };
+                var consultation = BuildLogin(true, false);
 
                 _adminRepo.UpdateLogin(consultation);
                 ClearForm();
                 LoadAdmins();
-                lblMessage.Text = $"Login Updated successfully.";
-                lblMessage.ForeColor = Color.Green;
-                lblMessage.Visible = true;
+                FrontMessager.BuildSuccessMessage(lblMessage, "Login", "Updated");
 
             }
             catch (Exception ex)
             {
-                lblMessage.Text = $"Error: {ex.Message}";
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Visible = true;
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
+        }
+
+        private Login BuildLogin(bool useId = true, bool usePassword = true)
+        {
+            return new Login
+            {
+                LoginId = useId ? _selectedAdminId.Value : 0,
+                LoginUserName = txtUsername.Text,
+                LoginPassword = usePassword ? PasswordHasher.HashPassword(txtPassword.Text) : string.Empty,
+                LoginIsActive = cmbActive.Text.Equals("sim") ? 1 : 0,
+                LoginRole = cmbRole.Text
+            };
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -131,15 +123,11 @@ namespace CA_Hospital_Management.UserControls
 
                 ClearForm();
                 LoadAdmins();
-                lblMessage.Text = $"Login {_selectedAdminId} Deleted successfully.";
-                lblMessage.ForeColor = Color.Green;
-                lblMessage.Visible = true;
+                FrontMessager.BuildSuccessMessage(lblMessage, "Login", "Deleted");
             }
             catch (Exception ex)
             {
-                lblMessage.Text = $"Error: {ex.Message}";
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Visible = true;
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
         }
 
@@ -167,28 +155,17 @@ namespace CA_Hospital_Management.UserControls
             {
                 if (_selectedAdminId == null) return;
 
-                var login = new Login
-                {
-                    LoginId = _selectedAdminId.Value,
-                    LoginUserName = txtUsername.Text,
-                    LoginPassword = PasswordHasher.HashPassword(txtPassword.Text),
-                    LoginIsActive = cmbActive.Text.Equals("Yes") ? 1 : 0,
-                    LoginRole = cmbRole.Text
-                };
+                var login = BuildLogin(true, true);
 
                 _adminRepo.UpdatePasswordLogin(login);
                 ClearForm();
                 LoadAdmins();
-                lblMessage.Text = $"Login Updated successfully.";
-                lblMessage.ForeColor = Color.Green;
-                lblMessage.Visible = true;
+                FrontMessager.BuildSuccessMessage(lblMessage, "Login", "Updated");
 
             }
             catch (Exception ex)
             {
-                lblMessage.Text = $"Error: {ex.Message}";
-                lblMessage.ForeColor = Color.Red;
-                lblMessage.Visible = true;
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
         }
 
