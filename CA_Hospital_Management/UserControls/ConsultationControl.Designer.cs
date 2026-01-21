@@ -9,6 +9,8 @@
         private TextBox txtPatient;
         private TextBox txtDoctor;
         private TextBox txtReason;
+        private TextBox txtDiagnosis;
+        private TextBox txtNotes;
         private DateTimePicker dtpConsultationDate;
 
         private DataGridView mainDgv;
@@ -18,17 +20,10 @@
         private Button btnClear;
 
         private Label lblMessage;
-        private Label lblPatient;
-        private Label lblLDoctor;
-        private Label lblReasonError;
-        private Label lblDiagnosisError;
         private Label lblError;
 
         private Label lblPatientId;
         private Label lblLastName;
-        private Label lblPhone;
-        private Label lblAddress;
-        private Label lblHoursWorked;
         private Label lblDob;
 
         protected override void Dispose(bool disposing)
@@ -45,8 +40,12 @@
         {
             splitCont = new SplitContainer();
             panelForm = new Panel();
-            txtNotes = new TextBox();
             txtDiagnosis = new TextBox();
+            label4 = new Label();
+            txtNotes = new TextBox();
+            label3 = new Label();
+            txtReason = new TextBox();
+            label5 = new Label();
             label2 = new Label();
             lblPagination = new Label();
             btnNext = new Button();
@@ -54,7 +53,6 @@
             label1 = new Label();
             txtSearch = new TextBox();
             btnGetConsultation = new Button();
-            lblPatient = new Label();
             lblPatientId = new Label();
             btnCreate = new Button();
             txtPatient = new TextBox();
@@ -62,17 +60,10 @@
             lblLastName = new Label();
             txtDoctor = new TextBox();
             btnClear = new Button();
-            lblLDoctor = new Label();
             btnDelete = new Button();
-            lblPhone = new Label();
             btnUpdate = new Button();
-            txtReason = new TextBox();
             dtpConsultationDate = new DateTimePicker();
-            lblReasonError = new Label();
             lblDob = new Label();
-            lblHoursWorked = new Label();
-            lblAddress = new Label();
-            lblDiagnosisError = new Label();
             lblError = new Label();
             mainDgv = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)splitCont).BeginInit();
@@ -105,8 +96,12 @@
             // 
             // panelForm
             // 
-            panelForm.Controls.Add(txtNotes);
             panelForm.Controls.Add(txtDiagnosis);
+            panelForm.Controls.Add(label4);
+            panelForm.Controls.Add(txtNotes);
+            panelForm.Controls.Add(label3);
+            panelForm.Controls.Add(txtReason);
+            panelForm.Controls.Add(label5);
             panelForm.Controls.Add(label2);
             panelForm.Controls.Add(lblPagination);
             panelForm.Controls.Add(btnNext);
@@ -114,7 +109,6 @@
             panelForm.Controls.Add(label1);
             panelForm.Controls.Add(txtSearch);
             panelForm.Controls.Add(btnGetConsultation);
-            panelForm.Controls.Add(lblPatient);
             panelForm.Controls.Add(lblPatientId);
             panelForm.Controls.Add(btnCreate);
             panelForm.Controls.Add(txtPatient);
@@ -122,17 +116,10 @@
             panelForm.Controls.Add(lblLastName);
             panelForm.Controls.Add(txtDoctor);
             panelForm.Controls.Add(btnClear);
-            panelForm.Controls.Add(lblLDoctor);
             panelForm.Controls.Add(btnDelete);
-            panelForm.Controls.Add(lblPhone);
             panelForm.Controls.Add(btnUpdate);
-            panelForm.Controls.Add(txtReason);
             panelForm.Controls.Add(dtpConsultationDate);
-            panelForm.Controls.Add(lblReasonError);
             panelForm.Controls.Add(lblDob);
-            panelForm.Controls.Add(lblHoursWorked);
-            panelForm.Controls.Add(lblAddress);
-            panelForm.Controls.Add(lblDiagnosisError);
             panelForm.Controls.Add(lblError);
             panelForm.Font = new Font("Segoe UI", 9F);
             panelForm.Location = new Point(17, 3);
@@ -141,27 +128,77 @@
             panelForm.Size = new Size(1524, 589);
             panelForm.TabIndex = 32;
             // 
-            // txtNotes
-            // 
-            txtNotes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtNotes.BackColor = Color.FromArgb(255, 224, 192);
-            txtNotes.Location = new Point(416, 262);
-            txtNotes.Multiline = true;
-            txtNotes.Name = "txtNotes";
-            txtNotes.ScrollBars = ScrollBars.Vertical;
-            txtNotes.Size = new Size(789, 27);
-            txtNotes.TabIndex = 40;
-            // 
             // txtDiagnosis
             // 
-            txtDiagnosis.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txtDiagnosis.AcceptsReturn = true;
+            txtDiagnosis.AcceptsTab = true;
+            txtDiagnosis.Anchor = AnchorStyles.None;
             txtDiagnosis.BackColor = Color.FromArgb(255, 224, 192);
-            txtDiagnosis.Location = new Point(416, 209);
+            txtDiagnosis.Location = new Point(287, 249);
             txtDiagnosis.Multiline = true;
             txtDiagnosis.Name = "txtDiagnosis";
             txtDiagnosis.ScrollBars = ScrollBars.Vertical;
-            txtDiagnosis.Size = new Size(789, 27);
-            txtDiagnosis.TabIndex = 39;
+            txtDiagnosis.Size = new Size(508, 155);
+            txtDiagnosis.TabIndex = 5;
+            txtDiagnosis.TextAlign = HorizontalAlignment.Right;
+            // 
+            // label4
+            // 
+            label4.Font = new Font("Segoe UI", 9F);
+            label4.Location = new Point(181, 249);
+            label4.Name = "label4";
+            label4.RightToLeft = RightToLeft.Yes;
+            label4.Size = new Size(100, 23);
+            label4.TabIndex = 52;
+            label4.Text = "Diagnosis";
+            // 
+            // txtNotes
+            // 
+            txtNotes.AcceptsReturn = true;
+            txtNotes.AcceptsTab = true;
+            txtNotes.Anchor = AnchorStyles.None;
+            txtNotes.BackColor = Color.FromArgb(255, 224, 192);
+            txtNotes.Location = new Point(901, 249);
+            txtNotes.Multiline = true;
+            txtNotes.Name = "txtNotes";
+            txtNotes.ScrollBars = ScrollBars.Vertical;
+            txtNotes.Size = new Size(508, 155);
+            txtNotes.TabIndex = 6;
+            txtNotes.TextAlign = HorizontalAlignment.Right;
+            // 
+            // label3
+            // 
+            label3.Font = new Font("Segoe UI", 9F);
+            label3.Location = new Point(799, 249);
+            label3.Name = "label3";
+            label3.RightToLeft = RightToLeft.Yes;
+            label3.Size = new Size(100, 23);
+            label3.TabIndex = 49;
+            label3.Text = "Notes";
+            // 
+            // txtReason
+            // 
+            txtReason.AcceptsReturn = true;
+            txtReason.AcceptsTab = true;
+            txtReason.Anchor = AnchorStyles.None;
+            txtReason.BackColor = Color.FromArgb(255, 224, 192);
+            txtReason.Location = new Point(901, 77);
+            txtReason.Multiline = true;
+            txtReason.Name = "txtReason";
+            txtReason.ScrollBars = ScrollBars.Vertical;
+            txtReason.Size = new Size(508, 155);
+            txtReason.TabIndex = 4;
+            txtReason.TextAlign = HorizontalAlignment.Right;
+            // 
+            // label5
+            // 
+            label5.Font = new Font("Segoe UI", 9F);
+            label5.Location = new Point(828, 81);
+            label5.Name = "label5";
+            label5.RightToLeft = RightToLeft.Yes;
+            label5.Size = new Size(69, 23);
+            label5.TabIndex = 51;
+            label5.Text = "Reason";
             // 
             // label2
             // 
@@ -170,9 +207,9 @@
             label2.FlatStyle = FlatStyle.Flat;
             label2.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(620, 17);
+            label2.Location = new Point(157, 8);
             label2.Name = "label2";
-            label2.Size = new Size(285, 57);
+            label2.Size = new Size(1252, 57);
             label2.TabIndex = 38;
             label2.Text = "Consultations";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -180,7 +217,7 @@
             // lblPagination
             // 
             lblPagination.ForeColor = Color.Black;
-            lblPagination.Location = new Point(639, 552);
+            lblPagination.Location = new Point(651, 552);
             lblPagination.Name = "lblPagination";
             lblPagination.Size = new Size(256, 23);
             lblPagination.TabIndex = 37;
@@ -191,7 +228,7 @@
             btnNext.BackColor = SystemColors.MenuHighlight;
             btnNext.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnNext.ForeColor = Color.White;
-            btnNext.Location = new Point(901, 543);
+            btnNext.Location = new Point(913, 543);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(92, 40);
             btnNext.TabIndex = 36;
@@ -205,7 +242,7 @@
             btnPrev.FlatAppearance.BorderSize = 4;
             btnPrev.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPrev.ForeColor = Color.White;
-            btnPrev.Location = new Point(541, 543);
+            btnPrev.Location = new Point(553, 543);
             btnPrev.Name = "btnPrev";
             btnPrev.Size = new Size(92, 40);
             btnPrev.TabIndex = 35;
@@ -215,7 +252,7 @@
             // 
             // label1
             // 
-            label1.Location = new Point(463, 457);
+            label1.Location = new Point(475, 483);
             label1.Name = "label1";
             label1.Size = new Size(122, 23);
             label1.TabIndex = 34;
@@ -224,7 +261,7 @@
             // txtSearch
             // 
             txtSearch.BackColor = Color.FromArgb(255, 224, 192);
-            txtSearch.Location = new Point(589, 454);
+            txtSearch.Location = new Point(601, 480);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(327, 27);
             txtSearch.TabIndex = 33;
@@ -234,7 +271,7 @@
             btnGetConsultation.BackColor = SystemColors.MenuHighlight;
             btnGetConsultation.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnGetConsultation.ForeColor = Color.White;
-            btnGetConsultation.Location = new Point(924, 446);
+            btnGetConsultation.Location = new Point(936, 472);
             btnGetConsultation.Name = "btnGetConsultation";
             btnGetConsultation.Size = new Size(171, 42);
             btnGetConsultation.TabIndex = 32;
@@ -242,19 +279,10 @@
             btnGetConsultation.UseVisualStyleBackColor = false;
             btnGetConsultation.Click += btnGetConsultation_Click;
             // 
-            // lblPatient
-            // 
-            lblPatient.ForeColor = Color.Red;
-            lblPatient.Location = new Point(416, 124);
-            lblPatient.Name = "lblPatient";
-            lblPatient.Size = new Size(327, 23);
-            lblPatient.TabIndex = 2;
-            lblPatient.Visible = false;
-            // 
             // lblPatientId
             // 
             lblPatientId.Font = new Font("Segoe UI", 9F);
-            lblPatientId.Location = new Point(310, 97);
+            lblPatientId.Location = new Point(181, 81);
             lblPatientId.Name = "lblPatientId";
             lblPatientId.RightToLeft = RightToLeft.Yes;
             lblPatientId.Size = new Size(100, 23);
@@ -266,7 +294,7 @@
             btnCreate.BackColor = SystemColors.MenuHighlight;
             btnCreate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCreate.ForeColor = Color.White;
-            btnCreate.Location = new Point(541, 394);
+            btnCreate.Location = new Point(553, 420);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(92, 40);
             btnCreate.TabIndex = 26;
@@ -277,7 +305,7 @@
             // txtPatient
             // 
             txtPatient.BackColor = Color.FromArgb(255, 224, 192);
-            txtPatient.Location = new Point(416, 95);
+            txtPatient.Location = new Point(287, 79);
             txtPatient.Name = "txtPatient";
             txtPatient.Size = new Size(327, 27);
             txtPatient.TabIndex = 1;
@@ -286,7 +314,7 @@
             // lblMessage
             // 
             lblMessage.ForeColor = Color.Red;
-            lblMessage.Location = new Point(476, 507);
+            lblMessage.Location = new Point(488, 516);
             lblMessage.Name = "lblMessage";
             lblMessage.Size = new Size(581, 23);
             lblMessage.TabIndex = 31;
@@ -295,7 +323,7 @@
             // 
             // lblLastName
             // 
-            lblLastName.Location = new Point(778, 97);
+            lblLastName.Location = new Point(181, 123);
             lblLastName.Name = "lblLastName";
             lblLastName.Size = new Size(100, 23);
             lblLastName.TabIndex = 3;
@@ -304,10 +332,10 @@
             // txtDoctor
             // 
             txtDoctor.BackColor = Color.FromArgb(255, 224, 192);
-            txtDoctor.Location = new Point(878, 95);
+            txtDoctor.Location = new Point(287, 121);
             txtDoctor.Name = "txtDoctor";
             txtDoctor.Size = new Size(327, 27);
-            txtDoctor.TabIndex = 4;
+            txtDoctor.TabIndex = 2;
             txtDoctor.KeyPress += txtLastName_KeyPress;
             // 
             // btnClear
@@ -315,7 +343,7 @@
             btnClear.BackColor = SystemColors.MenuHighlight;
             btnClear.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClear.ForeColor = Color.White;
-            btnClear.Location = new Point(901, 394);
+            btnClear.Location = new Point(913, 420);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(92, 42);
             btnClear.TabIndex = 29;
@@ -323,20 +351,12 @@
             btnClear.UseVisualStyleBackColor = false;
             btnClear.Click += btnClear_Click;
             // 
-            // lblLDoctor
-            // 
-            lblLDoctor.ForeColor = Color.Red;
-            lblLDoctor.Location = new Point(878, 124);
-            lblLDoctor.Name = "lblLDoctor";
-            lblLDoctor.Size = new Size(327, 23);
-            lblLDoctor.TabIndex = 5;
-            // 
             // btnDelete
             // 
             btnDelete.BackColor = Color.Red;
             btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(781, 394);
+            btnDelete.Location = new Point(793, 420);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(92, 40);
             btnDelete.TabIndex = 28;
@@ -344,22 +364,12 @@
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
             // 
-            // lblPhone
-            // 
-            lblPhone.Font = new Font("Segoe UI", 9F);
-            lblPhone.Location = new Point(310, 265);
-            lblPhone.Name = "lblPhone";
-            lblPhone.RightToLeft = RightToLeft.Yes;
-            lblPhone.Size = new Size(100, 23);
-            lblPhone.TabIndex = 6;
-            lblPhone.Text = "Notes";
-            // 
             // btnUpdate
             // 
             btnUpdate.BackColor = Color.Lime;
             btnUpdate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnUpdate.ForeColor = Color.White;
-            btnUpdate.Location = new Point(661, 394);
+            btnUpdate.Location = new Point(673, 420);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(92, 40);
             btnUpdate.TabIndex = 27;
@@ -367,75 +377,28 @@
             btnUpdate.UseVisualStyleBackColor = false;
             btnUpdate.Click += btnUpdate_Click;
             // 
-            // txtReason
-            // 
-            txtReason.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtReason.BackColor = Color.FromArgb(255, 224, 192);
-            txtReason.Location = new Point(416, 150);
-            txtReason.Multiline = true;
-            txtReason.Name = "txtReason";
-            txtReason.ScrollBars = ScrollBars.Vertical;
-            txtReason.Size = new Size(789, 27);
-            txtReason.TabIndex = 7;
-            // 
             // dtpConsultationDate
             // 
             dtpConsultationDate.CalendarMonthBackground = Color.FromArgb(255, 224, 192);
-            dtpConsultationDate.Location = new Point(416, 318);
+            dtpConsultationDate.Location = new Point(287, 167);
             dtpConsultationDate.Name = "dtpConsultationDate";
             dtpConsultationDate.Size = new Size(327, 27);
-            dtpConsultationDate.TabIndex = 25;
-            // 
-            // lblReasonError
-            // 
-            lblReasonError.ForeColor = Color.Red;
-            lblReasonError.Location = new Point(416, 180);
-            lblReasonError.Name = "lblReasonError";
-            lblReasonError.Size = new Size(789, 23);
-            lblReasonError.TabIndex = 8;
+            dtpConsultationDate.TabIndex = 3;
             // 
             // lblDob
             // 
-            lblDob.Location = new Point(241, 322);
+            lblDob.Location = new Point(143, 171);
             lblDob.Name = "lblDob";
-            lblDob.Size = new Size(169, 23);
+            lblDob.Size = new Size(138, 23);
             lblDob.TabIndex = 24;
             lblDob.Text = "Consultation Date";
-            // 
-            // lblHoursWorked
-            // 
-            lblHoursWorked.Font = new Font("Segoe UI", 9F);
-            lblHoursWorked.Location = new Point(292, 209);
-            lblHoursWorked.Name = "lblHoursWorked";
-            lblHoursWorked.RightToLeft = RightToLeft.Yes;
-            lblHoursWorked.Size = new Size(118, 23);
-            lblHoursWorked.TabIndex = 21;
-            lblHoursWorked.Text = "Diagnosis";
-            // 
-            // lblAddress
-            // 
-            lblAddress.Font = new Font("Segoe UI", 9F);
-            lblAddress.Location = new Point(310, 153);
-            lblAddress.Name = "lblAddress";
-            lblAddress.RightToLeft = RightToLeft.Yes;
-            lblAddress.Size = new Size(100, 23);
-            lblAddress.TabIndex = 12;
-            lblAddress.Text = "Reason";
-            // 
-            // lblDiagnosisError
-            // 
-            lblDiagnosisError.ForeColor = Color.Red;
-            lblDiagnosisError.Location = new Point(416, 236);
-            lblDiagnosisError.Name = "lblDiagnosisError";
-            lblDiagnosisError.Size = new Size(789, 23);
-            lblDiagnosisError.TabIndex = 14;
             // 
             // lblError
             // 
             lblError.ForeColor = Color.Red;
-            lblError.Location = new Point(416, 368);
+            lblError.Location = new Point(157, 430);
             lblError.Name = "lblError";
-            lblError.Size = new Size(789, 23);
+            lblError.Size = new Size(387, 23);
             lblError.TabIndex = 17;
             // 
             // mainDgv
@@ -478,8 +441,11 @@
         private Button btnNext;
         private Button btnPrev;
         private Label label2;
-        private TextBox txtNotes;
-        private TextBox txtDiagnosis;
         private Button btnDelete;
+        private TextBox textBox1;
+        private Label label4;
+        private TextBox textBox2;
+        private Label label3;
+        private Label label5;
     }
 }

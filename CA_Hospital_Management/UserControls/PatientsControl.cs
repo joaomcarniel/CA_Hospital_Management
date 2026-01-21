@@ -178,22 +178,7 @@ namespace CA_Hospital_Management.UserControls
             cmbGender.SelectedIndex = -1;
             txtPatientNumber.Clear();
             _selectedPatientId = null;
-
-            lblFNameError.Text = "";
-            lblLNameError.Text = "";
-            lblPhoneError.Text = "";
-            lblEmailError.Text = "";
-            lblFNameError.Text = "";
-            lblLNameError.Text = "";
-            lblPhoneError.Text = "";
-            lblEmailError.Text = "";
-            lblAddrError.Text = "";
-            lblCountyError.Text = "";
-            lblGenderError.Text = "";
             lblError.Text = "";
-            lblAddrError.Text = "";
-            lblCountyError.Text = "";
-            lblGenderError.Text = "";
             lblError.Text = "";
             lblMessage.Text = "";
         }

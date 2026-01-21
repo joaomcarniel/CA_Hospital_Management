@@ -171,16 +171,7 @@ namespace CA_Hospital_Management.UserControls
             txtDiagnosis.Clear();
             txtNotes.Clear();
             _selectedConsultationId = null;
-
-            lblPatient.Text = "";
-            lblLDoctor.Text = "";
-            lblReasonError.Text = "";
-            lblPatient.Text = "";
-            lblLDoctor.Text = "";
-            lblReasonError.Text = "";
-            lblDiagnosisError.Text = "";
             lblError.Text = "";
-            lblDiagnosisError.Text = "";
             lblError.Text = "";
             lblMessage.Text = "";
         }

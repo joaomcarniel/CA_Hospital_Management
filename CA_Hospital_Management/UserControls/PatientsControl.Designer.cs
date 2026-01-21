@@ -26,14 +26,6 @@ namespace CA_Hospital_Management.UserControls
         private Button btnClear;
 
         private Label lblMessage;
-        private Label lblFNameError;
-        private Label lblLNameError;
-        private Label lblPhoneError;
-        private Label lblEmailError;
-        private Label lblAddrError;
-        private Label lblCountyError;
-        private Label lblGenderError;
-        private Label lblError;
 
         private Label lblFirstName;
         private Label lblLastName;
@@ -68,7 +60,6 @@ namespace CA_Hospital_Management.UserControls
             label1 = new Label();
             txtSearch = new TextBox();
             btnGetPatient = new Button();
-            lblFNameError = new Label();
             lblFirstName = new Label();
             btnCreate = new Button();
             txtFirstName = new TextBox();
@@ -76,29 +67,23 @@ namespace CA_Hospital_Management.UserControls
             lblLastName = new Label();
             txtLastName = new TextBox();
             btnClear = new Button();
-            lblLNameError = new Label();
             btnDelete = new Button();
             lblPhone = new Label();
             btnUpdate = new Button();
             txtPhone = new TextBox();
             dtpDoB = new DateTimePicker();
-            lblPhoneError = new Label();
             lblDob = new Label();
             lblEmail = new Label();
-            lblError = new Label();
             txtEmail = new TextBox();
-            lblEmailError = new Label();
             lblHoursWorked = new Label();
             lblAddress = new Label();
-            lblGenderError = new Label();
             txtAddress = new TextBox();
             cmbGender = new ComboBox();
-            lblAddrError = new Label();
             lblGender = new Label();
             lblCounty = new Label();
-            lblCountyError = new Label();
             cmbCounty = new ComboBox();
             mainDgv = new DataGridView();
+            lblError = new Label();
             ((System.ComponentModel.ISupportInitialize)splitCont).BeginInit();
             splitCont.Panel1.SuspendLayout();
             splitCont.Panel2.SuspendLayout();
@@ -138,7 +123,6 @@ namespace CA_Hospital_Management.UserControls
             panelForm.Controls.Add(label1);
             panelForm.Controls.Add(txtSearch);
             panelForm.Controls.Add(btnGetPatient);
-            panelForm.Controls.Add(lblFNameError);
             panelForm.Controls.Add(lblFirstName);
             panelForm.Controls.Add(btnCreate);
             panelForm.Controls.Add(txtFirstName);
@@ -146,27 +130,21 @@ namespace CA_Hospital_Management.UserControls
             panelForm.Controls.Add(lblLastName);
             panelForm.Controls.Add(txtLastName);
             panelForm.Controls.Add(btnClear);
-            panelForm.Controls.Add(lblLNameError);
             panelForm.Controls.Add(btnDelete);
             panelForm.Controls.Add(lblPhone);
             panelForm.Controls.Add(btnUpdate);
             panelForm.Controls.Add(txtPhone);
             panelForm.Controls.Add(dtpDoB);
-            panelForm.Controls.Add(lblPhoneError);
             panelForm.Controls.Add(lblDob);
             panelForm.Controls.Add(lblEmail);
             panelForm.Controls.Add(lblError);
             panelForm.Controls.Add(txtEmail);
-            panelForm.Controls.Add(lblEmailError);
             panelForm.Controls.Add(lblHoursWorked);
             panelForm.Controls.Add(lblAddress);
-            panelForm.Controls.Add(lblGenderError);
             panelForm.Controls.Add(txtAddress);
             panelForm.Controls.Add(cmbGender);
-            panelForm.Controls.Add(lblAddrError);
             panelForm.Controls.Add(lblGender);
             panelForm.Controls.Add(lblCounty);
-            panelForm.Controls.Add(lblCountyError);
             panelForm.Controls.Add(cmbCounty);
             panelForm.Location = new Point(17, 3);
             panelForm.Name = "panelForm";
@@ -178,7 +156,7 @@ namespace CA_Hospital_Management.UserControls
             btnGetPatientAbove25.BackColor = SystemColors.MenuHighlight;
             btnGetPatientAbove25.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnGetPatientAbove25.ForeColor = Color.White;
-            btnGetPatientAbove25.Location = new Point(949, 394);
+            btnGetPatientAbove25.Location = new Point(945, 394);
             btnGetPatientAbove25.Name = "btnGetPatientAbove25";
             btnGetPatientAbove25.Size = new Size(154, 42);
             btnGetPatientAbove25.TabIndex = 40;
@@ -202,9 +180,9 @@ namespace CA_Hospital_Management.UserControls
             label2.FlatStyle = FlatStyle.Flat;
             label2.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(620, 17);
+            label2.Location = new Point(299, 17);
             label2.Name = "label2";
-            label2.Size = new Size(285, 57);
+            label2.Size = new Size(906, 57);
             label2.TabIndex = 38;
             label2.Text = "Patients";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -274,29 +252,21 @@ namespace CA_Hospital_Management.UserControls
             btnGetPatient.UseVisualStyleBackColor = false;
             btnGetPatient.Click += btnGetPatient_Click;
             // 
-            // lblFNameError
-            // 
-            lblFNameError.ForeColor = Color.Red;
-            lblFNameError.Location = new Point(416, 124);
-            lblFNameError.Name = "lblFNameError";
-            lblFNameError.Size = new Size(100, 23);
-            lblFNameError.TabIndex = 2;
-            lblFNameError.Visible = false;
-            // 
             // lblFirstName
             // 
-            lblFirstName.Location = new Point(299, 97);
+            lblFirstName.Location = new Point(312, 97);
             lblFirstName.Name = "lblFirstName";
             lblFirstName.Size = new Size(100, 23);
             lblFirstName.TabIndex = 0;
             lblFirstName.Text = "First Name";
+            lblFirstName.TextAlign = ContentAlignment.TopRight;
             // 
             // btnCreate
             // 
             btnCreate.BackColor = SystemColors.MenuHighlight;
             btnCreate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCreate.ForeColor = Color.White;
-            btnCreate.Location = new Point(457, 394);
+            btnCreate.Location = new Point(453, 394);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(92, 40);
             btnCreate.TabIndex = 26;
@@ -329,6 +299,7 @@ namespace CA_Hospital_Management.UserControls
             lblLastName.Size = new Size(100, 23);
             lblLastName.TabIndex = 3;
             lblLastName.Text = "Last Name";
+            lblLastName.TextAlign = ContentAlignment.TopRight;
             // 
             // txtLastName
             // 
@@ -343,7 +314,7 @@ namespace CA_Hospital_Management.UserControls
             btnClear.BackColor = SystemColors.MenuHighlight;
             btnClear.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClear.ForeColor = Color.White;
-            btnClear.Location = new Point(826, 394);
+            btnClear.Location = new Point(822, 394);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(92, 42);
             btnClear.TabIndex = 29;
@@ -351,20 +322,12 @@ namespace CA_Hospital_Management.UserControls
             btnClear.UseVisualStyleBackColor = false;
             btnClear.Click += btnClear_Click;
             // 
-            // lblLNameError
-            // 
-            lblLNameError.ForeColor = Color.Red;
-            lblLNameError.Location = new Point(878, 124);
-            lblLNameError.Name = "lblLNameError";
-            lblLNameError.Size = new Size(100, 23);
-            lblLNameError.TabIndex = 5;
-            // 
             // btnDelete
             // 
             btnDelete.BackColor = Color.Red;
             btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(703, 394);
+            btnDelete.Location = new Point(699, 394);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(92, 40);
             btnDelete.TabIndex = 28;
@@ -374,18 +337,19 @@ namespace CA_Hospital_Management.UserControls
             // 
             // lblPhone
             // 
-            lblPhone.Location = new Point(299, 153);
+            lblPhone.Location = new Point(312, 153);
             lblPhone.Name = "lblPhone";
             lblPhone.Size = new Size(100, 23);
             lblPhone.TabIndex = 6;
             lblPhone.Text = "Phone";
+            lblPhone.TextAlign = ContentAlignment.TopRight;
             // 
             // btnUpdate
             // 
             btnUpdate.BackColor = Color.Lime;
             btnUpdate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnUpdate.ForeColor = Color.White;
-            btnUpdate.Location = new Point(580, 394);
+            btnUpdate.Location = new Point(576, 394);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(92, 40);
             btnUpdate.TabIndex = 27;
@@ -409,14 +373,6 @@ namespace CA_Hospital_Management.UserControls
             dtpDoB.Size = new Size(327, 27);
             dtpDoB.TabIndex = 25;
             // 
-            // lblPhoneError
-            // 
-            lblPhoneError.ForeColor = Color.Red;
-            lblPhoneError.Location = new Point(416, 180);
-            lblPhoneError.Name = "lblPhoneError";
-            lblPhoneError.Size = new Size(280, 23);
-            lblPhoneError.TabIndex = 8;
-            // 
             // lblDob
             // 
             lblDob.Location = new Point(778, 321);
@@ -424,6 +380,7 @@ namespace CA_Hospital_Management.UserControls
             lblDob.Size = new Size(100, 23);
             lblDob.TabIndex = 24;
             lblDob.Text = "Date of Birth";
+            lblDob.TextAlign = ContentAlignment.TopRight;
             // 
             // lblEmail
             // 
@@ -432,14 +389,7 @@ namespace CA_Hospital_Management.UserControls
             lblEmail.Size = new Size(100, 23);
             lblEmail.TabIndex = 9;
             lblEmail.Text = "Email";
-            // 
-            // lblError
-            // 
-            lblError.ForeColor = Color.Red;
-            lblError.Location = new Point(416, 348);
-            lblError.Name = "lblError";
-            lblError.Size = new Size(259, 23);
-            lblError.TabIndex = 23;
+            lblEmail.TextAlign = ContentAlignment.TopRight;
             // 
             // txtEmail
             // 
@@ -449,37 +399,23 @@ namespace CA_Hospital_Management.UserControls
             txtEmail.Size = new Size(327, 27);
             txtEmail.TabIndex = 10;
             // 
-            // lblEmailError
-            // 
-            lblEmailError.ForeColor = Color.Red;
-            lblEmailError.Location = new Point(878, 180);
-            lblEmailError.Name = "lblEmailError";
-            lblEmailError.Size = new Size(280, 23);
-            lblEmailError.TabIndex = 11;
-            // 
             // lblHoursWorked
             // 
-            lblHoursWorked.Location = new Point(295, 321);
+            lblHoursWorked.Location = new Point(294, 321);
             lblHoursWorked.Name = "lblHoursWorked";
             lblHoursWorked.Size = new Size(118, 23);
             lblHoursWorked.TabIndex = 21;
             lblHoursWorked.Text = "Patient Number";
+            lblHoursWorked.TextAlign = ContentAlignment.TopRight;
             // 
             // lblAddress
             // 
-            lblAddress.Location = new Point(299, 209);
+            lblAddress.Location = new Point(312, 209);
             lblAddress.Name = "lblAddress";
             lblAddress.Size = new Size(100, 23);
             lblAddress.TabIndex = 12;
             lblAddress.Text = "Address";
-            // 
-            // lblGenderError
-            // 
-            lblGenderError.ForeColor = Color.Red;
-            lblGenderError.Location = new Point(878, 291);
-            lblGenderError.Name = "lblGenderError";
-            lblGenderError.Size = new Size(280, 23);
-            lblGenderError.TabIndex = 20;
+            lblAddress.TextAlign = ContentAlignment.TopRight;
             // 
             // txtAddress
             // 
@@ -498,14 +434,6 @@ namespace CA_Hospital_Management.UserControls
             cmbGender.Size = new Size(179, 28);
             cmbGender.TabIndex = 19;
             // 
-            // lblAddrError
-            // 
-            lblAddrError.ForeColor = Color.Red;
-            lblAddrError.Location = new Point(416, 236);
-            lblAddrError.Name = "lblAddrError";
-            lblAddrError.Size = new Size(280, 23);
-            lblAddrError.TabIndex = 14;
-            // 
             // lblGender
             // 
             lblGender.Location = new Point(778, 263);
@@ -513,22 +441,16 @@ namespace CA_Hospital_Management.UserControls
             lblGender.Size = new Size(100, 23);
             lblGender.TabIndex = 18;
             lblGender.Text = "Gender";
+            lblGender.TextAlign = ContentAlignment.TopRight;
             // 
             // lblCounty
             // 
-            lblCounty.Location = new Point(299, 263);
+            lblCounty.Location = new Point(312, 263);
             lblCounty.Name = "lblCounty";
             lblCounty.Size = new Size(100, 23);
             lblCounty.TabIndex = 15;
             lblCounty.Text = "County";
-            // 
-            // lblCountyError
-            // 
-            lblCountyError.ForeColor = Color.Red;
-            lblCountyError.Location = new Point(416, 291);
-            lblCountyError.Name = "lblCountyError";
-            lblCountyError.Size = new Size(259, 23);
-            lblCountyError.TabIndex = 17;
+            lblCounty.TextAlign = ContentAlignment.TopRight;
             // 
             // cmbCounty
             // 
@@ -552,6 +474,14 @@ namespace CA_Hospital_Management.UserControls
             mainDgv.Size = new Size(1561, 233);
             mainDgv.TabIndex = 0;
             mainDgv.CellClick += mainDgv_CellClick;
+            // 
+            // lblError
+            // 
+            lblError.ForeColor = Color.Red;
+            lblError.Location = new Point(299, 361);
+            lblError.Name = "lblError";
+            lblError.Size = new Size(906, 23);
+            lblError.TabIndex = 23;
             // 
             // PatientsControl
             // 
@@ -581,5 +511,6 @@ namespace CA_Hospital_Management.UserControls
         private Label label2;
         private TextBox txtPatientNumber;
         private Button btnGetPatientAbove25;
+        private Label lblError;
     }
 }

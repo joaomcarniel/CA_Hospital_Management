@@ -1,9 +1,7 @@
-﻿using CA_Hospital_Management.Models;
-using CA_Hospital_Management.Models.DTOs;
+﻿using CA_Hospital_Management.Models.DTOs;
 using CA_Hospital_Management.Models.Entities;
 using CA_Hospital_Management.Repositories;
 using CA_Hospital_Management.Services;
-using Microsoft.Data.SqlClient;
 
 namespace CA_Hospital_Management.UserControls
 {
@@ -161,13 +159,6 @@ namespace CA_Hospital_Management.UserControls
             txtReason.Clear();
             txtNotes.Clear();
             _selectedConsultationId = null;
-
-            lblNurseIdError.Text = "";
-            lblConsultationError.Text = "";
-            lblReasonError.Text = "";
-            lblNurseIdError.Text = "";
-            lblConsultationError.Text = "";
-            lblReasonError.Text = "";
             lblError.Text = "";
             lblError.Text = "";
             lblMessage.Text = "";
@@ -235,6 +226,11 @@ namespace CA_Hospital_Management.UserControls
             {
                 e.Handled = true;
             }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
