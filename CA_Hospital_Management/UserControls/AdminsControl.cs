@@ -21,8 +21,8 @@ namespace CA_Hospital_Management.UserControls
             _adminRepo = new AdminRepository();
             LoadAdmins();
 
-            LoadActiveCombo();
-            LoadRoleCombo();
+            ComboLoader.LoadActiveCombo(cmbActive);
+            ComboLoader.LoadRoleCombo(cmbRole);
             mainDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
@@ -39,26 +39,6 @@ namespace CA_Hospital_Management.UserControls
 
             btnPrev.Enabled = _currentPage > 1;
             btnNext.Enabled = _currentPage < _totalPages;
-        }
-
-        private void LoadActiveCombo()
-        {
-            cmbActive.Items.Clear();
-            cmbActive.Items.AddRange(new string[]
-            {
-                "Yes", "No"
-            });
-            cmbActive.SelectedIndex = 0;
-        }
-
-        private void LoadRoleCombo()
-        {
-            cmbRole.Items.Clear();
-            cmbRole.Items.AddRange(new string[]
-            {
-                "Admin", "User"
-            });
-            cmbRole.SelectedIndex = -1;
         }
 
         private void btnCreate_Click(object sender, EventArgs e)

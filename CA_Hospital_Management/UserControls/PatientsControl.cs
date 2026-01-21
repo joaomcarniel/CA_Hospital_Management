@@ -1,6 +1,7 @@
 ﻿using CA_Hospital_Management.Models.Entities;
 using CA_Hospital_Management.Models.Enums;
 using CA_Hospital_Management.Repositories;
+using CA_Hospital_Management.Services;
 using HospitalManagement.Repositories;
 
 namespace CA_Hospital_Management.UserControls
@@ -25,8 +26,8 @@ namespace CA_Hospital_Management.UserControls
             _hospitalRepo = new HospitalRepository();
 
             LoadPatients();
-            LoadCountyCombo();
-            LoadGenderCombo();
+            ComboLoader.LoadCountyCombo(cmbCounty);
+            ComboLoader.LoadGenderCombo(cmbGender);
 
             CenterFormPanel();
             mainDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -46,18 +47,6 @@ namespace CA_Hospital_Management.UserControls
 
             btnPrev.Enabled = _currentPage > 1;
             btnNext.Enabled = _currentPage < _totalPages;
-        }
-
-        private void LoadCountyCombo()
-        {
-            cmbCounty.DataSource = Enum.GetValues(typeof(CountiesEnum));
-            cmbCounty.SelectedIndex = -1;
-        }
-
-        private void LoadGenderCombo()
-        {
-            cmbGender.DataSource = Enum.GetValues(typeof(GenderEnum));
-            cmbGender.SelectedIndex = -1;
         }
 
         private void mainDgv_CellClick(object sender, DataGridViewCellEventArgs e)
