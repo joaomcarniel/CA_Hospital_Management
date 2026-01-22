@@ -147,6 +147,7 @@ namespace CA_Hospital_Management.UserControls
             txtConsultationId.Clear();
             txtNurseId.Clear();
             txtReason.Clear();
+            txtDiagnosis.Clear();
             txtNotes.Clear();
             _selectedConsultationId = null;
             lblError.Text = "";

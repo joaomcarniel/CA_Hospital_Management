@@ -108,7 +108,7 @@ namespace CA_Hospital_Management.UserControls
                 LoginId = useId ? _selectedAdminId.Value : 0,
                 LoginUserName = txtUsername.Text,
                 LoginPassword = usePassword ? PasswordHasher.HashPassword(txtPassword.Text) : string.Empty,
-                LoginIsActive = cmbActive.Text.Equals("sim") ? 1 : 0,
+                LoginIsActive = cmbActive.Text.Equals("Yes") ? 1 : 0,
                 LoginRole = cmbRole.Text
             };
         }

@@ -66,6 +66,7 @@
             lblDob = new Label();
             lblError = new Label();
             mainDgv = new DataGridView();
+            btnConsultationsToday = new Button();
             ((System.ComponentModel.ISupportInitialize)splitCont).BeginInit();
             splitCont.Panel1.SuspendLayout();
             splitCont.Panel2.SuspendLayout();
@@ -96,6 +97,7 @@
             // 
             // panelForm
             // 
+            panelForm.Controls.Add(btnConsultationsToday);
             panelForm.Controls.Add(txtDiagnosis);
             panelForm.Controls.Add(label4);
             panelForm.Controls.Add(txtNotes);
@@ -294,7 +296,7 @@
             btnCreate.BackColor = SystemColors.MenuHighlight;
             btnCreate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCreate.ForeColor = Color.White;
-            btnCreate.Location = new Point(553, 420);
+            btnCreate.Location = new Point(472, 420);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(92, 40);
             btnCreate.TabIndex = 26;
@@ -343,7 +345,7 @@
             btnClear.BackColor = SystemColors.MenuHighlight;
             btnClear.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClear.ForeColor = Color.White;
-            btnClear.Location = new Point(913, 420);
+            btnClear.Location = new Point(826, 420);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(92, 42);
             btnClear.TabIndex = 29;
@@ -356,7 +358,7 @@
             btnDelete.BackColor = Color.Red;
             btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(793, 420);
+            btnDelete.Location = new Point(708, 420);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(92, 40);
             btnDelete.TabIndex = 28;
@@ -369,7 +371,7 @@
             btnUpdate.BackColor = Color.Lime;
             btnUpdate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnUpdate.ForeColor = Color.White;
-            btnUpdate.Location = new Point(673, 420);
+            btnUpdate.Location = new Point(590, 420);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(92, 40);
             btnUpdate.TabIndex = 27;
@@ -415,6 +417,19 @@
             mainDgv.TabIndex = 0;
             mainDgv.CellClick += mainDgv_CellClick;
             // 
+            // btnConsultationsToday
+            // 
+            btnConsultationsToday.BackColor = SystemColors.MenuHighlight;
+            btnConsultationsToday.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnConsultationsToday.ForeColor = Color.White;
+            btnConsultationsToday.Location = new Point(944, 420);
+            btnConsultationsToday.Name = "btnConsultationsToday";
+            btnConsultationsToday.Size = new Size(162, 42);
+            btnConsultationsToday.TabIndex = 53;
+            btnConsultationsToday.Text = "Consultations Today";
+            btnConsultationsToday.UseVisualStyleBackColor = false;
+            btnConsultationsToday.Click += btnConsultationsToday_Click;
+            // 
             // ConsultationControl
             // 
             Controls.Add(splitCont);
@@ -447,5 +462,6 @@
         private TextBox textBox2;
         private Label label3;
         private Label label5;
+        private Button btnConsultationsToday;
     }
 }

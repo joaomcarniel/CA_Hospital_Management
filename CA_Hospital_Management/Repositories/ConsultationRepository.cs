@@ -16,16 +16,22 @@ namespace CA_Hospital_Management.Repositories
         {
             context = new HospitalDbContext();
         }
-        public ListPaginated<ConsultationDto> SearchConsultationPaged(string firstName, int pageNumber, int pageSize)
+        public ListPaginated<ConsultationDto> SearchConsultationPaged(string firstName, int pageNumber, int pageSize, bool ConsultationToday = false)
         {
             var result = new ListPaginated<ConsultationDto>();
 
             using var conn = new SqlConnection(context.Database.GetConnectionString());
-            using var cmd = new SqlCommand("GetConsultationsPaged", conn);
 
+            using var cmd = ConsultationToday ? new SqlCommand("GetConsultationsTodayPaged", conn) 
+                            : new SqlCommand("GetConsultationsPaged", conn);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@FirstName",
-                string.IsNullOrWhiteSpace(firstName) ? DBNull.Value : firstName);
+            if (!ConsultationToday)
+            {
+                
+                cmd.Parameters.AddWithValue("@FirstName",
+                    string.IsNullOrWhiteSpace(firstName) ? DBNull.Value : firstName);
+            }
+            
             cmd.Parameters.AddWithValue("@PageNumber", pageNumber);
             cmd.Parameters.AddWithValue("@PageSize", pageSize);
 

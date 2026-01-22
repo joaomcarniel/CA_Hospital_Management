@@ -228,12 +228,19 @@ namespace CA_Hospital_Management.UserControls
 
         private void btnMaleNurses_Click(object sender, EventArgs e)
         {
-            var result = _nurseRepo.SearchMaleNursesPaged(
+            try
+            {
+                var result = _nurseRepo.SearchMaleNursesPaged(
                 txtSearch.Text.Trim(),
                 _currentPage,
                 PageSize);
 
-            UpdateDataGrid(result);
+                UpdateDataGrid(result);
+            }
+            catch(Exception ex)
+            {
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
+            }
         }
     }
 }

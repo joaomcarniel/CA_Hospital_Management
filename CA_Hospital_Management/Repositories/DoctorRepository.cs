@@ -106,14 +106,5 @@ namespace CA_Hospital_Management.Repositories
                 new SqlParameter("@ContractType", doctor.ContractType)
             );
         }
-
-        public List<Doctor> GetDoctorByFirstName(string firstName)
-        {
-            return context.Doctors
-                .FromSqlRaw("EXEC GetDoctorByFirstName @firstName",
-                new SqlParameter("@firstName", firstName))
-                .AsNoTracking()
-                .ToList();
-        }
     }
 }

@@ -35,6 +35,11 @@ namespace CA_Hospital_Management.UserControls
                 _currentPage,
                 PageSize);
 
+            UpdateDataGrid(result);
+        }
+
+        private void UpdateDataGrid(ListPaginated<ConsultationDto> result)
+        {
             mainDgv.DataSource = result.Items;
 
             _totalPages = result.TotalPages;
@@ -210,6 +215,24 @@ namespace CA_Hospital_Management.UserControls
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void btnConsultationsToday_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = _consultationRepo.SearchConsultationPaged(
+                txtSearch.Text.Trim(),
+                _currentPage,
+                PageSize,
+                true);
+
+                UpdateDataGrid(result);
+            }
+            catch (Exception ex) 
+            {
+                FrontMessager.BuildExceptionMessage(lblMessage, ex.Message);
             }
         }
     }
