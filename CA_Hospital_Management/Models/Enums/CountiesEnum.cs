@@ -1,6 +1,6 @@
 ﻿namespace CA_Hospital_Management.Models.Enums
 {
-    internal enum CountiesEnum
+    public enum CountiesEnum
     {
         Carlow,
         Cavan,

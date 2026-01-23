@@ -160,8 +160,10 @@ namespace CA_Hospital_Management.UserControls
             txtPhone.Clear();
             txtEmail.Clear();
             txtAddress.Clear();
+            txtDepartment.Clear();
             cmbCounty.SelectedIndex = -1;
             cmbGender.SelectedIndex = -1;
+            cmbContract.SelectedIndex = -1;
             hoursWorked.Value = 0;
             _selectedNurseId = null;
             lblError.Text = "";

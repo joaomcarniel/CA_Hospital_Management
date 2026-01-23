@@ -39,8 +39,6 @@
         {
             splitCont = new SplitContainer();
             panelForm = new Panel();
-            txtDiagnosis = new TextBox();
-            label4 = new Label();
             txtNotes = new TextBox();
             txtNurseId = new TextBox();
             label3 = new Label();
@@ -97,8 +95,6 @@
             // 
             // panelForm
             // 
-            panelForm.Controls.Add(txtDiagnosis);
-            panelForm.Controls.Add(label4);
             panelForm.Controls.Add(txtNotes);
             panelForm.Controls.Add(txtNurseId);
             panelForm.Controls.Add(label3);
@@ -130,30 +126,6 @@
             panelForm.RightToLeft = RightToLeft.Yes;
             panelForm.Size = new Size(1524, 589);
             panelForm.TabIndex = 32;
-            // 
-            // txtDiagnosis
-            // 
-            txtDiagnosis.AcceptsReturn = true;
-            txtDiagnosis.AcceptsTab = true;
-            txtDiagnosis.Anchor = AnchorStyles.None;
-            txtDiagnosis.BackColor = Color.FromArgb(255, 224, 192);
-            txtDiagnosis.Location = new Point(284, 259);
-            txtDiagnosis.Multiline = true;
-            txtDiagnosis.Name = "txtDiagnosis";
-            txtDiagnosis.ScrollBars = ScrollBars.Vertical;
-            txtDiagnosis.Size = new Size(508, 155);
-            txtDiagnosis.TabIndex = 6;
-            txtDiagnosis.TextAlign = HorizontalAlignment.Right;
-            // 
-            // label4
-            // 
-            label4.Font = new Font("Segoe UI", 9F);
-            label4.Location = new Point(178, 259);
-            label4.Name = "label4";
-            label4.RightToLeft = RightToLeft.Yes;
-            label4.Size = new Size(100, 23);
-            label4.TabIndex = 46;
-            label4.Text = "Diagnosis";
             // 
             // txtNotes
             // 
@@ -465,7 +437,5 @@
         private TextBox txtNurseId;
         private TextBox textBox2;
         private TextBox txtNotes;
-        private Label label4;
-        private TextBox txtDiagnosis;
     }
 }

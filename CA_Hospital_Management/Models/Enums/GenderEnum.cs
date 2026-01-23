@@ -2,7 +2,7 @@
 
 namespace CA_Hospital_Management.Models.Enums
 {
-    internal enum GenderEnum
+    public enum GenderEnum
     {
         Female,
         Male,
