@@ -108,9 +108,9 @@ namespace CA_Hospital_Management.Forms
             tabControlMain.Controls.Add(tabDoctors);
             tabControlMain.Controls.Add(tabPatients);
             tabControlMain.Controls.Add(tabConsultations);
-            tabControlMain.Controls.Add(tabAdmin);
             tabControlMain.Controls.Add(tabNurses);
             tabControlMain.Controls.Add(tabConsultationDetails);
+            tabControlMain.Controls.Add(tabAdmin);
             tabControlMain.Dock = DockStyle.Fill;
             tabControlMain.Location = new Point(0, 28);
             tabControlMain.Name = "tabControlMain";
@@ -153,7 +153,6 @@ namespace CA_Hospital_Management.Forms
             patientsControl1.Name = "patientsControl1";
             patientsControl1.Size = new Size(1453, 687);
             patientsControl1.TabIndex = 0;
-            patientsControl1.Load += patientsControl1_Load;
             // 
             // tabConsultations
             // 
@@ -216,7 +215,6 @@ namespace CA_Hospital_Management.Forms
             tabConsultationDetails.TabIndex = 4;
             tabConsultationDetails.Text = "Consultation Details";
             tabConsultationDetails.UseVisualStyleBackColor = true;
-            tabConsultationDetails.Click += tabPage1_Click;
             // 
             // consultationDetailsControl1
             // 

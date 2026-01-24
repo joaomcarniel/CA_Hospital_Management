@@ -1,5 +1,4 @@
 ﻿using CA_Hospital_Management.Models.Entities;
-using CA_Hospital_Management.UserControls;
 
 namespace CA_Hospital_Management.Forms
 {
@@ -55,19 +54,9 @@ namespace CA_Hospital_Management.Forms
             }
         }
 
-        private void doctorsControl1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void menuPatients_Click(object sender, EventArgs e)
         {
             tabControlMain.SelectedTab = tabPatients;
-        }
-
-        private void patientsControl1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void menuConsultations_Click(object sender, EventArgs e)
@@ -78,11 +67,6 @@ namespace CA_Hospital_Management.Forms
         private void sfToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabControlMain.SelectedTab = tabConsultationDetails;
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)

@@ -118,6 +118,7 @@
             Controls.Add(label1);
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
+            MaximizeBox = false;
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
